@@ -169,6 +169,19 @@ overflow-x: hidden;
 overscroll-behavior: none;
 }
 
+/* ─── SAFE AREA COVER (iOS notch/Dynamic Island strip) ─── */
+body::after {
+content: '';
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+height: env(safe-area-inset-top, 0px);
+background: var(--jungle-deep);
+pointer-events: none;
+z-index: 200;
+}
+
 /* ─── TEXTURE OVERLAY ─── */
 body::before {
 content: '';
