@@ -313,6 +313,19 @@ padding-top: calc(0.8rem + env(safe-area-inset-top, 0px));
 box-shadow: 0 4px 30px rgba(0,0,0,0.3);
 }
 
+/* Dekkende strook die boven de nav doorloopt — vangt het doorzichtige
+   randje af op iOS, ook als env(safe-area-inset-top) als 0 wordt gerapporteerd */
+nav.scrolled::before {
+content: '';
+position: absolute;
+left: 0;
+right: 0;
+bottom: 0;
+top: calc(-1 * env(safe-area-inset-top, 0px) - 80px);
+background: #0b1f0e;
+z-index: -1;
+}
+
 .nav-logo {
 font-family: 'Playfair Display', serif;
 font-size: 1.5rem;
