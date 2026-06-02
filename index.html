@@ -4,7 +4,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0b1f0e">
 <title>Camardine Lokobe Tours — Lokobe Jungle Tours in Nosy Be, Madagascar</title>
 
 <!-- SEO Meta Tags -->
@@ -166,7 +165,7 @@ body {
 font-family: 'DM Sans', sans-serif;
 background: var(--cream);
 color: var(--jungle-deep);
-overflow-x: clip;
+overflow-x: hidden;
 overscroll-behavior: none;
 }
 
@@ -279,18 +278,21 @@ z-index: 9999;
 
 /* ─── NAVIGATION ─── */
 nav {
-position: sticky;
+position: fixed;
 top: 0;
+left: 0;
+right: 0;
 z-index: 100;
 padding: 1.2rem 3rem;
 display: flex;
 justify-content: space-between;
 align-items: center;
-background: #0b1f0e;
-transition: padding 0.5s ease, box-shadow 0.5s ease;
+transition: all 0.5s ease;
 }
 
 nav.scrolled {
+background: rgba(11, 31, 14, 0.92);
+backdrop-filter: blur(20px);
 padding: 0.8rem 3rem;
 box-shadow: 0 4px 30px rgba(0,0,0,0.3);
 }
@@ -401,7 +403,7 @@ position: relative;
 text-align: center;
 max-width: 900px;
 padding: 0 2rem;
-padding-top: 2rem;
+padding-top: 6rem;
 padding-bottom: 5rem;
 animation: fadeUp 1.2s ease-out;
 }
@@ -1508,7 +1510,7 @@ nav { padding: 1rem 1.5rem; }
 .nav-logo { font-size: 1rem; }
 .nav-logo img { width: 100px; height: 100px; }
 nav.scrolled .nav-logo img { width: 44px; height: 44px; }
-.hero-content { padding-top: 2rem; padding-bottom: 6rem; }
+.hero-content { padding-top: 7rem; padding-bottom: 6rem; }
 .hero-tagline { margin-bottom: 1rem; }
 .hero h1 { font-size: clamp(2rem, 7vw, 3.2rem); }
 .contact-form { grid-template-columns: 1fr; }
