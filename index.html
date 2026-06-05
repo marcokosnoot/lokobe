@@ -1531,6 +1531,232 @@ nav.scrolled .nav-logo img { width: 44px; height: 44px; }
 .scroll-card { flex: 0 0 260px; }
 .slider-arrow { width: 32px; height: 32px; }
 }
+
+/* ─── TOUR MODAL ─── */
+.tour-modal {
+display: none;
+position: fixed;
+inset: 0;
+z-index: 9000;
+align-items: center;
+justify-content: center;
+padding: 1rem;
+}
+.tour-modal.open { display: flex; }
+.tour-modal-overlay {
+position: absolute;
+inset: 0;
+background: rgba(11, 31, 14, 0.85);
+backdrop-filter: blur(6px);
+cursor: pointer;
+}
+.tour-modal-card {
+position: relative;
+background: var(--cream);
+border-radius: 16px;
+max-width: 680px;
+width: 100%;
+max-height: 90vh;
+overflow-y: auto;
+box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+z-index: 1;
+overscroll-behavior: contain;
+}
+.tour-modal-close {
+position: absolute;
+top: 1rem;
+right: 1rem;
+z-index: 2;
+background: rgba(11,31,14,0.55);
+backdrop-filter: blur(6px);
+border: none;
+color: var(--warm-gold);
+width: 36px;
+height: 36px;
+border-radius: 50%;
+font-size: 1.4rem;
+line-height: 1;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: background 0.2s;
+}
+.tour-modal-close:hover { background: rgba(11,31,14,0.85); }
+.tour-modal-hero {
+position: relative;
+height: 240px;
+overflow: hidden;
+border-radius: 16px 16px 0 0;
+}
+.tour-modal-hero img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+}
+.tour-modal-hero-overlay {
+position: absolute;
+inset: 0;
+background: linear-gradient(to top, rgba(11,31,14,0.75) 0%, transparent 60%);
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+padding: 1.5rem 2rem;
+}
+.tour-modal-tag {
+font-size: 0.75rem;
+font-weight: 600;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: var(--warm-gold);
+margin-bottom: 0.3rem;
+}
+.tour-modal-title {
+font-family: 'Playfair Display', serif;
+font-size: 2rem;
+color: var(--white);
+margin: 0;
+}
+.tour-modal-content { padding: 2rem; }
+.tour-modal-stats {
+display: flex;
+background: var(--jungle-deep);
+border-radius: 10px;
+margin-bottom: 1.8rem;
+overflow: hidden;
+}
+.tour-modal-stat {
+flex: 1;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 1rem 0.5rem;
+text-align: center;
+border-right: 1px solid rgba(255,255,255,0.07);
+}
+.tour-modal-stat:last-child { border-right: none; }
+.tour-modal-stat-icon { font-size: 1.2rem; margin-bottom: 0.2rem; }
+.tour-modal-stat-label {
+font-size: 0.68rem;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+color: rgba(232,197,109,0.5);
+margin-bottom: 0.2rem;
+}
+.tour-modal-stat-value { font-size: 0.9rem; font-weight: 600; color: var(--warm-gold); }
+.tour-modal-desc {
+font-size: 0.95rem;
+line-height: 1.75;
+color: rgba(11,31,14,0.75);
+margin-bottom: 1.8rem;
+}
+.tour-modal-section { margin-bottom: 1.8rem; }
+.tour-modal-section h3 {
+font-family: 'Playfair Display', serif;
+font-size: 1.1rem;
+color: var(--jungle-deep);
+margin-bottom: 0.9rem;
+padding-bottom: 0.5rem;
+border-bottom: 1px solid rgba(11,31,14,0.1);
+}
+.tour-modal-list {
+list-style: none;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 0.5rem 1rem;
+}
+.tour-modal-list li {
+font-size: 0.88rem;
+color: rgba(11,31,14,0.75);
+padding-left: 1.2rem;
+position: relative;
+}
+.tour-modal-list li::before {
+content: '✓';
+position: absolute;
+left: 0;
+color: var(--leaf);
+font-weight: 700;
+}
+.tour-modal-highlights { display: flex; flex-direction: column; gap: 1rem; }
+.tour-modal-hl { display: flex; gap: 1rem; align-items: flex-start; }
+.tour-modal-hl-icon {
+font-size: 1.2rem;
+flex-shrink: 0;
+width: 2.4rem;
+height: 2.4rem;
+background: var(--sand);
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.tour-modal-hl strong {
+display: block;
+font-size: 0.9rem;
+font-weight: 600;
+color: var(--jungle-deep);
+margin-bottom: 0.2rem;
+}
+.tour-modal-hl p {
+font-size: 0.85rem;
+line-height: 1.6;
+color: rgba(11,31,14,0.65);
+margin: 0;
+}
+.tour-modal-note {
+font-size: 0.78rem;
+color: rgba(11,31,14,0.4);
+margin-bottom: 1.5rem;
+font-style: italic;
+}
+.tour-modal-cta {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 0.7rem;
+width: 100%;
+padding: 1rem;
+background: #25D366;
+color: #fff;
+border-radius: 10px;
+text-decoration: none;
+font-weight: 600;
+font-size: 1rem;
+transition: background 0.2s, transform 0.15s;
+}
+.tour-modal-cta:hover { background: #1da854; transform: translateY(-1px); }
+.tour-modal-cta svg { width: 20px; height: 20px; fill: #fff; flex-shrink: 0; }
+.scroll-card-details {
+display: block;
+width: 100%;
+background: none;
+border: 1.5px solid rgba(11,31,14,0.2);
+border-radius: 6px;
+padding: 0.55rem 1rem;
+font-family: 'DM Sans', sans-serif;
+font-size: 0.85rem;
+font-weight: 500;
+color: var(--jungle-deep);
+cursor: pointer;
+margin-bottom: 0.75rem;
+transition: all 0.2s;
+text-align: left;
+}
+.scroll-card-details:hover {
+background: var(--jungle-deep);
+color: var(--warm-gold);
+border-color: var(--jungle-deep);
+}
+@media (max-width: 600px) {
+.tour-modal-stats { flex-direction: column; }
+.tour-modal-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); padding: 0.75rem; }
+.tour-modal-stat:last-child { border-bottom: none; }
+.tour-modal-list { grid-template-columns: 1fr; }
+.tour-modal-hero { height: 180px; }
+.tour-modal-title { font-size: 1.6rem; }
+}
 </style>
 
 </head>
@@ -1891,6 +2117,7 @@ nav.scrolled .nav-logo img { width: 44px; height: 44px; }
           <div class="scroll-card-body">
             <h3 data-i18n="ot_iranja_name">Nosy Iranja</h3>
             <p data-i18n="ot_iranja_desc">The stunning "Turtle Island" — two islets connected by a white sandbar at low tide. A paradise for swimming, snorkeling, and unforgettable photos.</p>
+            <button class="scroll-card-details" id="openIraModal" data-i18n="ot_details">More details</button>
             <a href="https://wa.me/261329953831?text=Hi%20Camardine!%20I'd%20like%20more%20info%20about%20the%20Nosy%20Iranja%20tour." target="_blank" class="scroll-card-cta">
               <span data-i18n="ot_ask">Ask for info</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1954,6 +2181,90 @@ nav.scrolled .nav-logo img { width: 44px; height: 44px; }
     </div>
   </div>
 </section>
+
+<!-- Nosy Iranja Modal -->
+<div id="iraModal" class="tour-modal" role="dialog" aria-modal="true" aria-labelledby="iraModalTitle">
+  <div class="tour-modal-overlay" id="iraModalOverlay"></div>
+  <div class="tour-modal-card">
+    <button class="tour-modal-close" id="iraModalClose" aria-label="Close">&times;</button>
+    <div class="tour-modal-hero">
+      <img src="nosy-iranja.jpeg" alt="Nosy Iranja — Turtle Island, Nosy Be, Madagascar">
+      <div class="tour-modal-hero-overlay">
+        <div class="tour-modal-tag" data-i18n="iranja_tagline">Turtle Island · Nosy Be</div>
+        <h2 id="iraModalTitle" class="tour-modal-title">Nosy Iranja</h2>
+      </div>
+    </div>
+    <div class="tour-modal-content">
+      <div class="tour-modal-stats">
+        <div class="tour-modal-stat">
+          <span class="tour-modal-stat-icon">⏱️</span>
+          <span class="tour-modal-stat-label" data-i18n="iranja_duration_label">Duration</span>
+          <span class="tour-modal-stat-value" data-i18n="iranja_duration">~8 hours</span>
+        </div>
+        <div class="tour-modal-stat">
+          <span class="tour-modal-stat-icon">💰</span>
+          <span class="tour-modal-stat-label" data-i18n="iranja_price_label">From</span>
+          <span class="tour-modal-stat-value" data-i18n="iranja_price">~€65 / person*</span>
+        </div>
+        <div class="tour-modal-stat">
+          <span class="tour-modal-stat-icon">🚤</span>
+          <span class="tour-modal-stat-label" data-i18n="iranja_boat_label">Boat ride</span>
+          <span class="tour-modal-stat-value" data-i18n="iranja_boat">~2h each way</span>
+        </div>
+      </div>
+      <p class="tour-modal-desc" data-i18n="iranja_desc">Nosy Iranja — Madagascar's most iconic island escape. Two islets connected by a stunning 1.2 km white sandbar at low tide, turquoise waters teeming with sea turtles, and a small fishing village where time moves slowly. This is the day trip everyone who visits Nosy Be puts first on their list.</p>
+      <div class="tour-modal-section">
+        <h3 data-i18n="iranja_included_title">What's Included</h3>
+        <ul class="tour-modal-list">
+          <li data-i18n="iranja_inc_1">Boat transfer (return)</li>
+          <li data-i18n="iranja_inc_2">Malagasy beach lunch</li>
+          <li data-i18n="iranja_inc_3">Snorkeling gear</li>
+          <li data-i18n="iranja_inc_4">Park entrance fee</li>
+          <li data-i18n="iranja_inc_5">Guide</li>
+          <li data-i18n="iranja_inc_6">Bottled water</li>
+        </ul>
+      </div>
+      <div class="tour-modal-section">
+        <h3 data-i18n="iranja_highlights_title">Highlights</h3>
+        <div class="tour-modal-highlights">
+          <div class="tour-modal-hl">
+            <span class="tour-modal-hl-icon">🏖️</span>
+            <div>
+              <strong data-i18n="iranja_hl1_name">The Sandbar</strong>
+              <p data-i18n="iranja_hl1_desc">At low tide, a 1.2 km white sandbar appears and connects the two islets — one of the most photographed spots in Madagascar.</p>
+            </div>
+          </div>
+          <div class="tour-modal-hl">
+            <span class="tour-modal-hl-icon">🐢</span>
+            <div>
+              <strong data-i18n="iranja_hl2_name">Sea Turtles</strong>
+              <p data-i18n="iranja_hl2_desc">Swim and snorkel alongside sea turtles in crystal-clear water with visibility up to 20 metres. This is their nesting island.</p>
+            </div>
+          </div>
+          <div class="tour-modal-hl">
+            <span class="tour-modal-hl-icon">🏠</span>
+            <div>
+              <strong data-i18n="iranja_hl3_name">Fishing Village</strong>
+              <p data-i18n="iranja_hl3_desc">A traditional Malagasy fishing village on the main island — meet local families, taste fresh seafood, and see authentic island life.</p>
+            </div>
+          </div>
+          <div class="tour-modal-hl">
+            <span class="tour-modal-hl-icon">🗼</span>
+            <div>
+              <strong data-i18n="iranja_hl4_name">Historic Lighthouse</strong>
+              <p data-i18n="iranja_hl4_desc">Climb to the lighthouse (reportedly designed by Gustave Eiffel) for a breathtaking panoramic view of both islets and the open ocean.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="tour-modal-note" data-i18n="iranja_price_note">* Price indicative — confirm with Camardine when booking.</p>
+      <a href="https://wa.me/261329953831?text=Hi%20Camardine!%20I'd%20like%20to%20book%20the%20Nosy%20Iranja%20tour." target="_blank" class="tour-modal-cta">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span data-i18n="iranja_cta">Book via WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</div>
 
 <!-- Contact / Booking -->
 
@@ -2095,7 +2406,22 @@ nav.scrolled .nav-logo img { width: 44px; height: 44px; }
       ot_tsingy_name: "Tsingy Rouge", ot_tsingy_desc: "Marvel at the dramatic red limestone needle formations near Ambilobe — a surreal, otherworldly landscape unique to northern Madagascar.",
       ot_amber_name: "Amber Mountain", ot_amber_desc: "Explore Montagne d'Ambre National Park — lush rainforest, cascading waterfalls, and rare chameleons hidden in one of Madagascar's most biodiverse parks.",
       ot_ankarana_name: "Ankarana National Park", ot_ankarana_desc: "Discover the legendary tsingy limestone forests, underground rivers, and sacred caves of Ankarana — home to crowned lemurs and hundreds of bat species.",
-      ot_ask: "Ask for info", swipe_explore: "Swipe to explore",
+      ot_ask: "Ask for info", ot_details: "More details", swipe_explore: "Swipe to explore",
+      iranja_tagline: "Turtle Island · Nosy Be",
+      iranja_duration_label: "Duration", iranja_duration: "~8 hours",
+      iranja_price_label: "From", iranja_price: "~€65 / person*",
+      iranja_boat_label: "Boat ride", iranja_boat: "~2h each way",
+      iranja_desc: "Nosy Iranja — Madagascar's most iconic island escape. Two islets connected by a stunning 1.2 km white sandbar at low tide, turquoise waters teeming with sea turtles, and a small fishing village where time moves slowly. This is the day trip everyone who visits Nosy Be puts first on their list.",
+      iranja_included_title: "What's Included",
+      iranja_inc_1: "Boat transfer (return)", iranja_inc_2: "Malagasy beach lunch", iranja_inc_3: "Snorkeling gear",
+      iranja_inc_4: "Park entrance fee", iranja_inc_5: "Guide", iranja_inc_6: "Bottled water",
+      iranja_highlights_title: "Highlights",
+      iranja_hl1_name: "The Sandbar", iranja_hl1_desc: "At low tide, a 1.2 km white sandbar appears and connects the two islets — one of the most photographed spots in Madagascar.",
+      iranja_hl2_name: "Sea Turtles", iranja_hl2_desc: "Swim and snorkel alongside sea turtles in crystal-clear water with visibility up to 20 metres. This is their nesting island.",
+      iranja_hl3_name: "Fishing Village", iranja_hl3_desc: "A traditional Malagasy fishing village on the main island — meet local families, taste fresh seafood, and see authentic island life.",
+      iranja_hl4_name: "Historic Lighthouse", iranja_hl4_desc: "Climb to the lighthouse (reportedly designed by Gustave Eiffel) for a breathtaking panoramic view of both islets and the open ocean.",
+      iranja_price_note: "* Price indicative — confirm with Camardine when booking.",
+      iranja_cta: "Book via WhatsApp",
       contact_label: "Ready?", contact_title: "Book Your Lokobe Adventure",
       contact_desc: "Send me a message and I'll get back to you within 24 hours to confirm your tour. Flexible scheduling — I'll work around your travel plans.",
       contact_meeting: "Meeting Point", wa_contact: "Contact via WhatsApp", ta_review: "Read our reviews",
@@ -2150,7 +2476,22 @@ nav.scrolled .nav-logo img { width: 44px; height: 44px; }
       ot_tsingy_name: "Tsingy Rouge", ot_tsingy_desc: "Admirez les spectaculaires formations d'aiguilles en calcaire rouge près d'Ambilobe — un paysage surréaliste et unique au nord de Madagascar.",
       ot_amber_name: "Montagne d'Ambre", ot_amber_desc: "Explorez le Parc National de la Montagne d'Ambre — forêt tropicale luxuriante, cascades et caméléons rares dans l'un des parcs les plus riches en biodiversité de Madagascar.",
       ot_ankarana_name: "Parc National d'Ankarana", ot_ankarana_desc: "Découvrez les forêts de tsingy légendaires, les rivières souterraines et les grottes sacrées d'Ankarana — refuge des lémuriens couronnés et de centaines d'espèces de chauves-souris.",
-      ot_ask: "Demander des infos", swipe_explore: "Faites défiler pour explorer",
+      ot_ask: "Demander des infos", ot_details: "Plus de détails", swipe_explore: "Faites défiler pour explorer",
+      iranja_tagline: "Île aux Tortues · Nosy Be",
+      iranja_duration_label: "Durée", iranja_duration: "~8 heures",
+      iranja_price_label: "À partir de", iranja_price: "~65€ / personne*",
+      iranja_boat_label: "Trajet en bateau", iranja_boat: "~2h aller-retour",
+      iranja_desc: "Nosy Iranja — l'île la plus iconique de Madagascar. Deux îlots reliés par un banc de sable blanc de 1,2 km à marée basse, des eaux turquoises peuplées de tortues marines et un petit village de pêcheurs où le temps s'écoule doucement. C'est l'excursion que tous les visiteurs de Nosy Be mettent en tête de liste.",
+      iranja_included_title: "Ce qui est inclus",
+      iranja_inc_1: "Transfert en bateau (aller-retour)", iranja_inc_2: "Déjeuner malgache sur la plage", iranja_inc_3: "Équipement de snorkeling",
+      iranja_inc_4: "Droit d'entrée du parc", iranja_inc_5: "Guide", iranja_inc_6: "Eau en bouteille",
+      iranja_highlights_title: "Les Incontournables",
+      iranja_hl1_name: "Le Banc de Sable", iranja_hl1_desc: "À marée basse, un banc de sable blanc de 1,2 km relie les deux îlots — l'un des endroits les plus photographiés de Madagascar.",
+      iranja_hl2_name: "Tortues Marines", iranja_hl2_desc: "Nagez et plongez en apnée aux côtés de tortues marines dans une eau cristalline avec une visibilité jusqu'à 20 mètres. C'est leur île de nidification.",
+      iranja_hl3_name: "Village de Pêcheurs", iranja_hl3_desc: "Un village de pêcheurs malgache traditionnel sur l'île principale — rencontrez des familles locales, goûtez les fruits de mer frais et vivez la vie authentique de l'île.",
+      iranja_hl4_name: "Phare Historique", iranja_hl4_desc: "Montez jusqu'au phare (prétendument conçu par Gustave Eiffel) pour une vue panoramique à couper le souffle sur les deux îlots et l'océan.",
+      iranja_price_note: "* Prix indicatif — à confirmer avec Camardine lors de la réservation.",
+      iranja_cta: "Réserver via WhatsApp",
       contact_label: "Prêt ?", contact_title: "Réservez Votre Aventure à Lokobe",
       contact_desc: "Envoyez-moi un message et je vous répondrai sous 24 heures pour confirmer votre excursion. Planning flexible — je m'adapte à vos plans de voyage.",
       contact_meeting: "Point de Rencontre", wa_contact: "Contacter via WhatsApp", ta_review: "Lire nos avis",
@@ -2205,7 +2546,22 @@ nav.scrolled .nav-logo img { width: 44px; height: 44px; }
       ot_tsingy_name: "Tsingy Rouge", ot_tsingy_desc: "Ammirate le spettacolari formazioni di aghi in calcare rosso vicino ad Ambilobe — un paesaggio surreale e unico nel nord del Madagascar.",
       ot_amber_name: "Montagna d'Ambra", ot_amber_desc: "Esplorate il Parco Nazionale della Montagna d'Ambra — foresta pluviale lussureggiante, cascate e camaleonti rari in uno dei parchi più ricchi di biodiversità del Madagascar.",
       ot_ankarana_name: "Parco Nazionale di Ankarana", ot_ankarana_desc: "Scoprite le leggendarie foreste di tsingy, i fiumi sotterranei e le grotte sacre di Ankarana — rifugio dei lemuri coronati e di centinaia di specie di pipistrelli.",
-      ot_ask: "Chiedi informazioni", swipe_explore: "Scorri per esplorare",
+      ot_ask: "Chiedi informazioni", ot_details: "Maggiori dettagli", swipe_explore: "Scorri per esplorare",
+      iranja_tagline: "Isola delle Tartarughe · Nosy Be",
+      iranja_duration_label: "Durata", iranja_duration: "~8 ore",
+      iranja_price_label: "A partire da", iranja_price: "~€65 / persona*",
+      iranja_boat_label: "Traversata in barca", iranja_boat: "~2h andata e ritorno",
+      iranja_desc: "Nosy Iranja — la più iconica isola del Madagascar. Due isolotti collegati da una lingua di sabbia bianca di 1,2 km con la bassa marea, acque turchesi ricche di tartarughe marine e un piccolo villaggio di pescatori dove il tempo scorre lentamente. È l'escursione che tutti i visitatori di Nosy Be mettono al primo posto nella loro lista.",
+      iranja_included_title: "Cosa è Incluso",
+      iranja_inc_1: "Trasferimento in barca (andata e ritorno)", iranja_inc_2: "Pranzo malgascio in spiaggia", iranja_inc_3: "Attrezzatura snorkeling",
+      iranja_inc_4: "Biglietto d'ingresso al parco", iranja_inc_5: "Guida", iranja_inc_6: "Acqua in bottiglia",
+      iranja_highlights_title: "I Momenti Clou",
+      iranja_hl1_name: "La Lingua di Sabbia", iranja_hl1_desc: "Con la bassa marea, una lingua di sabbia bianca di 1,2 km emerge e collega i due isolotti — uno dei luoghi più fotografati del Madagascar.",
+      iranja_hl2_name: "Tartarughe Marine", iranja_hl2_desc: "Nuotate e fate snorkeling accanto a tartarughe marine in acque cristalline con visibilità fino a 20 metri. Quest'isola è il loro sito di nidificazione.",
+      iranja_hl3_name: "Villaggio di Pescatori", iranja_hl3_desc: "Un tradizionale villaggio di pescatori malgascio sull'isola principale — incontrate famiglie locali, assaggiate frutti di mare freschi e vivete l'autentica vita isolana.",
+      iranja_hl4_name: "Faro Storico", iranja_hl4_desc: "Salite fino al faro (presumibilmente progettato da Gustave Eiffel) per una vista panoramica mozzafiato su entrambi gli isolotti e sull'oceano.",
+      iranja_price_note: "* Prezzo indicativo — da confermare con Camardine alla prenotazione.",
+      iranja_cta: "Prenota via WhatsApp",
       contact_label: "Pronti?", contact_title: "Prenota la Tua Avventura a Lokobe",
       contact_desc: "Mandami un messaggio e ti risponderò entro 24 ore per confermare la tua escursione. Orari flessibili — mi adatto ai tuoi piani di viaggio.",
       contact_meeting: "Punto d'Incontro", wa_contact: "Contatta via WhatsApp", ta_review: "Leggi le recensioni",
@@ -2260,7 +2616,22 @@ nav.scrolled .nav-logo img { width: 44px; height: 44px; }
       ot_tsingy_name: "Tsingy Rouge", ot_tsingy_desc: "Bestaunen Sie die dramatischen roten Kalksteinnadeln bei Ambilobe — eine surreale, außerweltliche Landschaft, die es nur im Norden Madagaskars gibt.",
       ot_amber_name: "Bernsteinberg (Montagne d'Ambre)", ot_amber_desc: "Erkunden Sie den Nationalpark Montagne d'Ambre — üppiger Regenwald, rauschende Wasserfälle und seltene Chamäleons in einem der artenreichsten Parks Madagaskars.",
       ot_ankarana_name: "Nationalpark Ankarana", ot_ankarana_desc: "Entdecken Sie die legendären Tsingy-Kalksteinwälder, unterirdischen Flüsse und heiligen Höhlen von Ankarana — Heimat von Kronlemuren und Hunderten von Fledermausarten.",
-      ot_ask: "Info anfragen", swipe_explore: "Wischen zum Entdecken",
+      ot_ask: "Info anfragen", ot_details: "Mehr Details", swipe_explore: "Wischen zum Entdecken",
+      iranja_tagline: "Schildkröteninsel · Nosy Be",
+      iranja_duration_label: "Dauer", iranja_duration: "~8 Stunden",
+      iranja_price_label: "Ab", iranja_price: "~€65 / Person*",
+      iranja_boat_label: "Bootsfahrt", iranja_boat: "~2h je Richtung",
+      iranja_desc: "Nosy Iranja — Madagaskars ikonischstes Insel-Abenteuer. Zwei Inselchen, bei Ebbe durch eine 1,2 km lange weiße Sandbank verbunden, türkisfarbenes Wasser voller Meeresschildkröten und ein kleines Fischerdorf, in dem die Zeit langsam vergeht. Das ist der Ausflug, den alle Besucher von Nosy Be ganz oben auf ihre Liste setzen.",
+      iranja_included_title: "Inbegriffen",
+      iranja_inc_1: "Bootsfähre (Hin- und Rückfahrt)", iranja_inc_2: "Madagassisches Strandmittagessen", iranja_inc_3: "Schnorchelausrüstung",
+      iranja_inc_4: "Parkeintritt", iranja_inc_5: "Guide", iranja_inc_6: "Mineralwasser",
+      iranja_highlights_title: "Highlights",
+      iranja_hl1_name: "Die Sandbank", iranja_hl1_desc: "Bei Ebbe erscheint eine 1,2 km lange weiße Sandbank und verbindet die beiden Inselchen — einer der meistfotografierten Orte Madagaskars.",
+      iranja_hl2_name: "Meeresschildkröten", iranja_hl2_desc: "Schwimmen und schnorcheln Sie neben Meeresschildkröten in kristallklarem Wasser mit einer Sichtweite bis zu 20 Metern. Diese Insel ist ihr Nistplatz.",
+      iranja_hl3_name: "Fischerdorf", iranja_hl3_desc: "Ein traditionelles madagassisches Fischerdorf auf der Hauptinsel — treffen Sie lokale Familien, kosten Sie frische Meeresfrüchte und erleben Sie authentisches Inselleben.",
+      iranja_hl4_name: "Historischer Leuchtturm", iranja_hl4_desc: "Besteigen Sie den Leuchtturm (angeblich von Gustave Eiffel entworfen) für einen atemberaubenden Panoramablick auf beide Inselchen und den Ozean.",
+      iranja_price_note: "* Preis indikativ — bei Buchung mit Camardine bestätigen.",
+      iranja_cta: "Per WhatsApp buchen",
       contact_label: "Bereit?", contact_title: "Buchen Sie Ihr Lokobe-Abenteuer",
       contact_desc: "Senden Sie mir eine Nachricht und ich antworte Ihnen innerhalb von 24 Stunden, um Ihre Tour zu bestätigen. Flexible Planung — ich richte mich nach Ihren Reiseplänen.",
       contact_meeting: "Treffpunkt", wa_contact: "Kontakt über WhatsApp", ta_review: "Bewertungen lesen",
@@ -2508,6 +2879,29 @@ nav.scrolled .nav-logo img { width: 44px; height: 44px; }
 
     startAutoplay();
   }
+
+  // ─── NOSY IRANJA MODAL ───
+  const iraModal = document.getElementById('iraModal');
+  const openIraBtn = document.getElementById('openIraModal');
+  const iraModalClose = document.getElementById('iraModalClose');
+  const iraModalOverlay = document.getElementById('iraModalOverlay');
+
+  function openIraModal() {
+    iraModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeIraModal() {
+    iraModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  if (openIraBtn) openIraBtn.addEventListener('click', openIraModal);
+  if (iraModalClose) iraModalClose.addEventListener('click', closeIraModal);
+  if (iraModalOverlay) iraModalOverlay.addEventListener('click', closeIraModal);
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && iraModal && iraModal.classList.contains('open')) closeIraModal();
+  });
 </script>
 
 </body>
