@@ -1513,12 +1513,13 @@ section { padding: 5rem 1.5rem; }
 .testimonial-grid { grid-template-columns: 1fr; }
 .nav-links { display: none; }
 nav { padding: 1rem 1.5rem; }
-.nav-logo { font-size: 1rem; }
-.nav-logo img { width: 100px; height: 100px; }
+.nav-logo { font-size: 0.85rem; white-space: nowrap; }
+.nav-logo img { width: 72px; height: 72px; }
 nav.scrolled .nav-logo img { width: 44px; height: 44px; }
 .hero-content { padding-top: 7rem; padding-bottom: 6rem; }
 .hero-tagline { margin-bottom: 1rem; }
 .hero h1 { font-size: clamp(2rem, 7vw, 3.2rem); }
+.lang-switcher { margin-left: auto; }
 .contact-form { grid-template-columns: 1fr; }
 .contact-form .full-width { grid-column: auto; }
 .scroll-hint { bottom: 1rem; }
@@ -1529,6 +1530,7 @@ nav.scrolled .nav-logo img { width: 44px; height: 44px; }
 }
 
 @media (max-width: 600px) {
+.hero h1 { font-size: clamp(1.6rem, 5.5vw, 2rem); line-height: 1.15; }
 .highlight-box { flex-direction: column; gap: 1.5rem; }
 .pricing-price { font-size: 2.2rem; }
 .contact-methods { gap: 2rem; flex-direction: column; align-items: center; }
