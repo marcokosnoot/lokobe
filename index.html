@@ -179,11 +179,8 @@ pointer-events: none;
 z-index: 9999;
 }
 
-/* ─── LANGUAGE SWITCHER (collapsible, floating top-right) ─── */
+/* ─── LANGUAGE SWITCHER ─── */
 .lang-switcher {
-  position: fixed;
-  top: 1.2rem;
-  right: 1.5rem;
   z-index: 101;
   display: flex;
   align-items: center;
@@ -196,11 +193,13 @@ z-index: 9999;
   border: 1px solid rgba(232, 197, 109, 0.12);
   transition: all 0.4s ease;
   cursor: pointer;
+  margin-left: 1.5rem;
+  flex-shrink: 0;
 }
 
-.lang-switcher.scrolled {
-  top: 0.65rem;
-  background: rgba(11, 31, 14, 0.85);
+nav.scrolled .lang-switcher {
+  background: transparent;
+  border-color: transparent;
 }
 
 .lang-btn {
@@ -327,6 +326,7 @@ height: 50px;
 display: flex;
 gap: 2rem;
 list-style: none;
+margin-left: auto;
 }
 
 .nav-links a {
@@ -1338,6 +1338,8 @@ border: 1px solid rgba(11, 31, 14, 0.06);
 transition: all 0.4s ease;
 position: relative;
 overflow: hidden;
+display: flex;
+flex-direction: column;
 }
 
 .scroll-card:hover {
@@ -1373,6 +1375,9 @@ background: radial-gradient(circle at 30% 70%, rgba(255,255,255,0.15), transpare
 
 .scroll-card-body {
 padding: 1.8rem;
+display: flex;
+flex-direction: column;
+flex: 1;
 }
 
 .scroll-card-body h3 {
@@ -1388,6 +1393,7 @@ line-height: 1.65;
 color: rgba(11, 31, 14, 0.55);
 font-weight: 300;
 margin-bottom: 1.2rem;
+flex: 1;
 }
 
 .scroll-card-cta {
@@ -1519,7 +1525,7 @@ nav.scrolled .nav-logo img { width: 44px; height: 44px; }
 .pricing-card-single { padding: 2.5rem 1.5rem; }
 .lang-btn { font-size: 1.15rem; }
 .lang-btn .flag-img { width: 18px; height: 13px; }
-.lang-switcher { top: 0.8rem; right: 1rem; padding: 0.3rem 0.4rem; }
+.lang-switcher { margin-left: 0.75rem; padding: 0.3rem 0.4rem; }
 }
 
 @media (max-width: 600px) {
@@ -1773,24 +1779,22 @@ border-color: var(--jungle-deep);
     <li><a href="#reviews" data-i18n="nav_reviews">Reviews</a></li>
     <li><a href="#book" data-i18n="nav_book">Book Now</a></li>
   </ul>
+  <div class="lang-switcher" id="langSwitcher">
+    <button class="lang-btn active" data-lang="en" aria-label="English" title="English">
+      <svg class="flag-img" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg"><clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#s)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></svg>
+    </button>
+    <button class="lang-btn" data-lang="fr" aria-label="Français" title="Français">
+      <svg class="flag-img" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="40" fill="#002395"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#ED2939"/></svg>
+    </button>
+    <button class="lang-btn" data-lang="it" aria-label="Italiano" title="Italiano">
+      <svg class="flag-img" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="40" fill="#009246"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#CE2B37"/></svg>
+    </button>
+    <button class="lang-btn" data-lang="de" aria-label="Deutsch" title="Deutsch">
+      <svg class="flag-img" viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="12" fill="#000"/><rect y="12" width="60" height="12" fill="#DD0000"/><rect y="24" width="60" height="12" fill="#FFCC00"/></svg>
+    </button>
+    <svg class="lang-switcher-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4.5l3 3 3-3"/></svg>
+  </div>
 </nav>
-
-<!-- Floating Language Switcher (collapsible) -->
-<div class="lang-switcher" id="langSwitcher">
-  <button class="lang-btn active" data-lang="en" aria-label="English" title="English">
-    <svg class="flag-img" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg"><clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#s)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></svg>
-  </button>
-  <button class="lang-btn" data-lang="fr" aria-label="Français" title="Français">
-    <svg class="flag-img" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="40" fill="#002395"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#ED2939"/></svg>
-  </button>
-  <button class="lang-btn" data-lang="it" aria-label="Italiano" title="Italiano">
-    <svg class="flag-img" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="40" fill="#009246"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#CE2B37"/></svg>
-  </button>
-  <button class="lang-btn" data-lang="de" aria-label="Deutsch" title="Deutsch">
-    <svg class="flag-img" viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="12" fill="#000"/><rect y="12" width="60" height="12" fill="#DD0000"/><rect y="24" width="60" height="12" fill="#FFCC00"/></svg>
-  </button>
-  <svg class="lang-switcher-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4.5l3 3 3-3"/></svg>
-</div>
 
 <!-- Hero -->
 
@@ -2065,11 +2069,25 @@ border-color: var(--jungle-deep);
       <div class="scroll-track" id="scrollTrack">
 
         <div class="scroll-card">
-          <div class="scroll-card-visual diving">🤿</div>
+          <div class="scroll-card-visual tanikely">🐢</div>
           <div class="scroll-card-body">
-            <h3 data-i18n="ot_diving_name">Diving & Snorkeling</h3>
-            <p data-i18n="ot_diving_desc">Discover the vibrant coral reefs and tropical marine life around Nosy Be. Crystal-clear waters with sea turtles, rays, and colorful fish.</p>
-            <a href="https://wa.me/261329953831?text=Hi%20Camardine!%20I'd%20like%20more%20info%20about%20the%20Diving%20%26%20Snorkeling%20tour." target="_blank" class="scroll-card-cta">
+            <h3 data-i18n="ot_tanikely_name">Nosy Tanikely</h3>
+            <p data-i18n="ot_tanikely_desc">A marine reserve paradise with the best snorkeling around Nosy Be. Swim alongside sea turtles in turquoise lagoons and relax on pristine beaches.</p>
+            <button class="scroll-card-details" id="openTanModal" data-i18n="ot_details">More details</button>
+            <a href="https://wa.me/261329953831?text=Hi%20Camardine!%20I'd%20like%20more%20info%20about%20the%20Nosy%20Tanikely%20tour." target="_blank" class="scroll-card-cta">
+              <span data-i18n="ot_ask">Ask for info</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="scroll-card">
+          <div class="scroll-card-visual iranja">🏝️</div>
+          <div class="scroll-card-body">
+            <h3 data-i18n="ot_iranja_name">Nosy Iranja</h3>
+            <p data-i18n="ot_iranja_desc">The stunning "Turtle Island" — two islets connected by a white sandbar at low tide. A paradise for swimming, snorkeling, and unforgettable photos.</p>
+            <button class="scroll-card-details" id="openIraModal" data-i18n="ot_details">More details</button>
+            <a href="https://wa.me/261329953831?text=Hi%20Camardine!%20I'd%20like%20more%20info%20about%20the%20Nosy%20Iranja%20tour." target="_blank" class="scroll-card-cta">
               <span data-i18n="ot_ask">Ask for info</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
@@ -2089,11 +2107,11 @@ border-color: var(--jungle-deep);
         </div>
 
         <div class="scroll-card">
-          <div class="scroll-card-visual tanikely">🐢</div>
+          <div class="scroll-card-visual diving">🤿</div>
           <div class="scroll-card-body">
-            <h3 data-i18n="ot_tanikely_name">Nosy Tanikely</h3>
-            <p data-i18n="ot_tanikely_desc">A marine reserve paradise with the best snorkeling around Nosy Be. Swim alongside sea turtles in turquoise lagoons and relax on pristine beaches.</p>
-            <a href="https://wa.me/261329953831?text=Hi%20Camardine!%20I'd%20like%20more%20info%20about%20the%20Nosy%20Tanikely%20tour." target="_blank" class="scroll-card-cta">
+            <h3 data-i18n="ot_diving_name">Diving & Snorkeling</h3>
+            <p data-i18n="ot_diving_desc">Discover the vibrant coral reefs and tropical marine life around Nosy Be. Crystal-clear waters with sea turtles, rays, and colorful fish.</p>
+            <a href="https://wa.me/261329953831?text=Hi%20Camardine!%20I'd%20like%20more%20info%20about%20the%20Diving%20%26%20Snorkeling%20tour." target="_blank" class="scroll-card-cta">
               <span data-i18n="ot_ask">Ask for info</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
@@ -2106,19 +2124,6 @@ border-color: var(--jungle-deep);
             <h3 data-i18n="ot_hellville_name">Hellville City Tour</h3>
             <p data-i18n="ot_hellville_desc">Explore the charming capital of Nosy Be — its lively market, colonial architecture, local spice stalls, and the vibrant daily life of the island.</p>
             <a href="https://wa.me/261329953831?text=Hi%20Camardine!%20I'd%20like%20more%20info%20about%20the%20Hellville%20City%20Tour." target="_blank" class="scroll-card-cta">
-              <span data-i18n="ot_ask">Ask for info</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="scroll-card">
-          <div class="scroll-card-visual iranja">🏝️</div>
-          <div class="scroll-card-body">
-            <h3 data-i18n="ot_iranja_name">Nosy Iranja</h3>
-            <p data-i18n="ot_iranja_desc">The stunning "Turtle Island" — two islets connected by a white sandbar at low tide. A paradise for swimming, snorkeling, and unforgettable photos.</p>
-            <button class="scroll-card-details" id="openIraModal" data-i18n="ot_details">More details</button>
-            <a href="https://wa.me/261329953831?text=Hi%20Camardine!%20I'd%20like%20more%20info%20about%20the%20Nosy%20Iranja%20tour." target="_blank" class="scroll-card-cta">
               <span data-i18n="ot_ask">Ask for info</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
@@ -2261,6 +2266,91 @@ border-color: var(--jungle-deep);
       <a href="https://wa.me/261329953831?text=Hi%20Camardine!%20I'd%20like%20to%20book%20the%20Nosy%20Iranja%20tour." target="_blank" class="tour-modal-cta">
         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         <span data-i18n="iranja_cta">Book via WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Nosy Tanikely Modal -->
+
+<div id="tanModal" class="tour-modal" role="dialog" aria-modal="true" aria-labelledby="tanModalTitle">
+  <div class="tour-modal-overlay" id="tanModalOverlay"></div>
+  <div class="tour-modal-card">
+    <button class="tour-modal-close" id="tanModalClose" aria-label="Close">&times;</button>
+    <div class="tour-modal-hero">
+      <img src="NosyTanikelyTurtle.JPEG" alt="Sea turtle in Nosy Tanikely marine reserve, Nosy Be, Madagascar" loading="lazy" style="object-position: center 30%;">
+      <div class="tour-modal-hero-overlay">
+        <div class="tour-modal-tag" data-i18n="tanikely_tagline">Natural Aquarium · Nosy Be</div>
+        <h2 id="tanModalTitle" class="tour-modal-title">Nosy Tanikely</h2>
+      </div>
+    </div>
+    <div class="tour-modal-content">
+      <div class="tour-modal-stats">
+        <div class="tour-modal-stat">
+          <span class="tour-modal-stat-icon">⏱️</span>
+          <span class="tour-modal-stat-label" data-i18n="tanikely_duration_label">Duration</span>
+          <span class="tour-modal-stat-value" data-i18n="tanikely_duration">~6 hours</span>
+        </div>
+        <div class="tour-modal-stat">
+          <span class="tour-modal-stat-icon">💰</span>
+          <span class="tour-modal-stat-label" data-i18n="tanikely_price_label">From</span>
+          <span class="tour-modal-stat-value" data-i18n="tanikely_price">€45 / person</span>
+        </div>
+        <div class="tour-modal-stat">
+          <span class="tour-modal-stat-icon">🚤</span>
+          <span class="tour-modal-stat-label" data-i18n="tanikely_boat_label">Boat ride</span>
+          <span class="tour-modal-stat-value" data-i18n="tanikely_boat">~35 min each way</span>
+        </div>
+      </div>
+      <p class="tour-modal-desc" data-i18n="tanikely_desc">Nosy Tanikely — Madagascar's finest natural aquarium. A tiny protected island 10 km from Nosy Be, surrounded by the healthiest coral reef in the region. Slip on your snorkel mask and within minutes you're swimming alongside green and hawksbill turtles, with visibility up to 30 metres. No diving experience needed — this is snorkeling for everyone.</p>
+      <div class="tour-modal-section">
+        <h3 data-i18n="tanikely_included_title">What's Included</h3>
+        <ul class="tour-modal-list">
+          <li data-i18n="tanikely_inc_1">Boat transfer (return)</li>
+          <li data-i18n="tanikely_inc_2">Beach picnic lunch</li>
+          <li data-i18n="tanikely_inc_3">Snorkeling gear</li>
+          <li data-i18n="tanikely_inc_4">Park entrance fee</li>
+          <li data-i18n="tanikely_inc_5">Guide</li>
+          <li data-i18n="tanikely_inc_6">Bottled water</li>
+        </ul>
+      </div>
+      <div class="tour-modal-section">
+        <h3 data-i18n="tanikely_highlights_title">Highlights</h3>
+        <div class="tour-modal-highlights">
+          <div class="tour-modal-hl">
+            <span class="tour-modal-hl-icon">🐢</span>
+            <div>
+              <strong data-i18n="tanikely_hl1_name">Sea Turtles</strong>
+              <p data-i18n="tanikely_hl1_desc">Green and hawksbill turtles patrol the shallow seagrass beds just metres from shore. Spotting them is almost guaranteed.</p>
+            </div>
+          </div>
+          <div class="tour-modal-hl">
+            <span class="tour-modal-hl-icon">🐠</span>
+            <div>
+              <strong data-i18n="tanikely_hl2_name">Natural Aquarium</strong>
+              <p data-i18n="tanikely_hl2_desc">The best snorkeling in Madagascar — coral gardens start just 20–30 m from the beach, with clownfish, parrotfish, barracuda, and moorish idol in crystal-clear water.</p>
+            </div>
+          </div>
+          <div class="tour-modal-hl">
+            <span class="tour-modal-hl-icon">🗼</span>
+            <div>
+              <strong data-i18n="tanikely_hl3_name">Lighthouse Hike</strong>
+              <p data-i18n="tanikely_hl3_desc">A short trail leads to the hilltop lighthouse with sweeping panoramic views over Nosy Be, Nosy Komba, and the endless blue horizon.</p>
+            </div>
+          </div>
+          <div class="tour-modal-hl">
+            <span class="tour-modal-hl-icon">🦎</span>
+            <div>
+              <strong data-i18n="tanikely_hl4_name">Wild Lemurs</strong>
+              <p data-i18n="tanikely_hl4_desc">Brown lemurs roam freely through the island's tropical forest. Along with flying foxes, they share this uninhabited paradise with you.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="tour-modal-note" data-i18n="tanikely_price_note">* Price indicative — confirm with Camardine when booking.</p>
+      <a href="https://wa.me/261329953831?text=Hi%20Camardine!%20I'd%20like%20to%20book%20the%20Nosy%20Tanikely%20tour." target="_blank" class="tour-modal-cta">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span data-i18n="tanikely_cta">Book via WhatsApp</span>
       </a>
     </div>
   </div>
@@ -2422,6 +2512,21 @@ border-color: var(--jungle-deep);
       iranja_hl4_name: "Historic Lighthouse", iranja_hl4_desc: "Climb to the lighthouse (reportedly designed by Gustave Eiffel) for a breathtaking panoramic view of both islets and the open ocean.",
       iranja_price_note: "* Price indicative — confirm with Camardine when booking.",
       iranja_cta: "Book via WhatsApp",
+      tanikely_tagline: "Natural Aquarium · Nosy Be",
+      tanikely_duration_label: "Duration", tanikely_duration: "~6 hours",
+      tanikely_price_label: "From", tanikely_price: "€45 / person",
+      tanikely_boat_label: "Boat ride", tanikely_boat: "~35 min each way",
+      tanikely_desc: "Nosy Tanikely — Madagascar's finest natural aquarium. A tiny protected island 10 km from Nosy Be, surrounded by the healthiest coral reef in the region. Slip on your snorkel mask and within minutes you're swimming alongside green and hawksbill turtles, with visibility up to 30 metres. No diving experience needed — this is snorkeling for everyone.",
+      tanikely_included_title: "What's Included",
+      tanikely_inc_1: "Boat transfer (return)", tanikely_inc_2: "Beach picnic lunch", tanikely_inc_3: "Snorkeling gear",
+      tanikely_inc_4: "Park entrance fee", tanikely_inc_5: "Guide", tanikely_inc_6: "Bottled water",
+      tanikely_highlights_title: "Highlights",
+      tanikely_hl1_name: "Sea Turtles", tanikely_hl1_desc: "Green and hawksbill turtles patrol the shallow seagrass beds just metres from shore. Spotting them is almost guaranteed.",
+      tanikely_hl2_name: "Natural Aquarium", tanikely_hl2_desc: "The best snorkeling in Madagascar — coral gardens start just 20–30 m from the beach, with clownfish, parrotfish, barracuda, and moorish idol in crystal-clear water.",
+      tanikely_hl3_name: "Lighthouse Hike", tanikely_hl3_desc: "A short trail leads to the hilltop lighthouse with sweeping panoramic views over Nosy Be, Nosy Komba, and the endless blue horizon.",
+      tanikely_hl4_name: "Wild Lemurs", tanikely_hl4_desc: "Brown lemurs roam freely through the island's tropical forest. Along with flying foxes, they share this uninhabited paradise with you.",
+      tanikely_price_note: "* Price indicative — confirm with Camardine when booking.",
+      tanikely_cta: "Book via WhatsApp",
       contact_label: "Ready?", contact_title: "Book Your Lokobe Adventure",
       contact_desc: "Send me a message and I'll get back to you within 24 hours to confirm your tour. Flexible scheduling — I'll work around your travel plans.",
       contact_meeting: "Meeting Point", wa_contact: "Contact via WhatsApp", ta_review: "Read our reviews",
@@ -2492,6 +2597,21 @@ border-color: var(--jungle-deep);
       iranja_hl4_name: "Phare Historique", iranja_hl4_desc: "Montez jusqu'au phare (prétendument conçu par Gustave Eiffel) pour une vue panoramique à couper le souffle sur les deux îlots et l'océan.",
       iranja_price_note: "* Prix indicatif — à confirmer avec Camardine lors de la réservation.",
       iranja_cta: "Réserver via WhatsApp",
+      tanikely_tagline: "Aquarium Naturel · Nosy Be",
+      tanikely_duration_label: "Durée", tanikely_duration: "~6 heures",
+      tanikely_price_label: "À partir de", tanikely_price: "45€ / personne",
+      tanikely_boat_label: "Trajet en bateau", tanikely_boat: "~35 min aller-retour",
+      tanikely_desc: "Nosy Tanikely — le plus bel aquarium naturel de Madagascar. Une petite île protégée à 10 km de Nosy Be, entourée des coraux les plus sains de la région. Mettez le masque et en quelques minutes vous nagez aux côtés de tortues marines vertes et imbriquées, avec une visibilité allant jusqu'à 30 mètres. Aucune expérience de plongée n'est nécessaire — ce snorkeling est pour tous.",
+      tanikely_included_title: "Ce qui est inclus",
+      tanikely_inc_1: "Transfert en bateau (aller-retour)", tanikely_inc_2: "Pique-nique sur la plage", tanikely_inc_3: "Équipement de snorkeling",
+      tanikely_inc_4: "Droit d'entrée du parc", tanikely_inc_5: "Guide", tanikely_inc_6: "Eau en bouteille",
+      tanikely_highlights_title: "Les Incontournables",
+      tanikely_hl1_name: "Tortues Marines", tanikely_hl1_desc: "Tortues vertes et imbriquées patrouillent les herbiers à quelques mètres du rivage. Les apercevoir est presque garanti.",
+      tanikely_hl2_name: "Aquarium Naturel", tanikely_hl2_desc: "Le meilleur snorkeling de Madagascar — les jardins de coraux commencent à 20–30 m de la plage, avec poissons-clowns, perroquets, barracudas et idoles des Maures dans une eau cristalline.",
+      tanikely_hl3_name: "Randonnée au Phare", tanikely_hl3_desc: "Un court sentier mène au phare au sommet de la colline, avec vue panoramique sur Nosy Be, Nosy Komba et l'horizon bleu infini.",
+      tanikely_hl4_name: "Lémuriens Sauvages", tanikely_hl4_desc: "Des lémuriens bruns se promènent librement dans la forêt tropicale de l'île. Avec les roussettes, ils partagent ce paradis inhabité avec vous.",
+      tanikely_price_note: "* Prix indicatif — à confirmer avec Camardine lors de la réservation.",
+      tanikely_cta: "Réserver via WhatsApp",
       contact_label: "Prêt ?", contact_title: "Réservez Votre Aventure à Lokobe",
       contact_desc: "Envoyez-moi un message et je vous répondrai sous 24 heures pour confirmer votre excursion. Planning flexible — je m'adapte à vos plans de voyage.",
       contact_meeting: "Point de Rencontre", wa_contact: "Contacter via WhatsApp", ta_review: "Lire nos avis",
@@ -2562,6 +2682,21 @@ border-color: var(--jungle-deep);
       iranja_hl4_name: "Faro Storico", iranja_hl4_desc: "Salite fino al faro (presumibilmente progettato da Gustave Eiffel) per una vista panoramica mozzafiato su entrambi gli isolotti e sull'oceano.",
       iranja_price_note: "* Prezzo indicativo — da confermare con Camardine alla prenotazione.",
       iranja_cta: "Prenota via WhatsApp",
+      tanikely_tagline: "Acquario Naturale · Nosy Be",
+      tanikely_duration_label: "Durata", tanikely_duration: "~6 ore",
+      tanikely_price_label: "A partire da", tanikely_price: "€45 / persona",
+      tanikely_boat_label: "Traversata in barca", tanikely_boat: "~35 min andata e ritorno",
+      tanikely_desc: "Nosy Tanikely — il più bell'acquario naturale del Madagascar. Una piccola isola protetta a 10 km da Nosy Be, circondata dai coralli più sani della regione. Indossate la maschera e in pochi minuti nuotate accanto a tartarughe verdi e imbricate, con visibilità fino a 30 metri. Nessuna esperienza richiesta — questo snorkeling è adatto a tutti.",
+      tanikely_included_title: "Cosa è Incluso",
+      tanikely_inc_1: "Trasferimento in barca (andata e ritorno)", tanikely_inc_2: "Picnic in spiaggia", tanikely_inc_3: "Attrezzatura snorkeling",
+      tanikely_inc_4: "Biglietto d'ingresso al parco", tanikely_inc_5: "Guida", tanikely_inc_6: "Acqua in bottiglia",
+      tanikely_highlights_title: "I Momenti Clou",
+      tanikely_hl1_name: "Tartarughe Marine", tanikely_hl1_desc: "Tartarughe verdi e imbricate pattugliano i fondali di posidonia a pochi metri dalla riva. Avvistarle è quasi garantito.",
+      tanikely_hl2_name: "Acquario Naturale", tanikely_hl2_desc: "Il miglior snorkeling del Madagascar — giardini di corallo iniziano a soli 20–30 m dalla spiaggia, con pesci pagliaccio, pappagalli, barracuda e idoli dei Mori in acque cristalline.",
+      tanikely_hl3_name: "Escursione al Faro", tanikely_hl3_desc: "Un breve sentiero conduce al faro in cima alla collina, con ampia vista panoramica su Nosy Be, Nosy Komba e l'orizzonte blu infinito.",
+      tanikely_hl4_name: "Lemuri Selvatici", tanikely_hl4_desc: "I lemuri bruni si muovono liberi nella foresta tropicale dell'isola. Insieme alle volpi volanti, condividono con voi questo paradiso disabitato.",
+      tanikely_price_note: "* Prezzo indicativo — da confermare con Camardine alla prenotazione.",
+      tanikely_cta: "Prenota via WhatsApp",
       contact_label: "Pronti?", contact_title: "Prenota la Tua Avventura a Lokobe",
       contact_desc: "Mandami un messaggio e ti risponderò entro 24 ore per confermare la tua escursione. Orari flessibili — mi adatto ai tuoi piani di viaggio.",
       contact_meeting: "Punto d'Incontro", wa_contact: "Contatta via WhatsApp", ta_review: "Leggi le recensioni",
@@ -2632,6 +2767,21 @@ border-color: var(--jungle-deep);
       iranja_hl4_name: "Historischer Leuchtturm", iranja_hl4_desc: "Besteigen Sie den Leuchtturm (angeblich von Gustave Eiffel entworfen) für einen atemberaubenden Panoramablick auf beide Inselchen und den Ozean.",
       iranja_price_note: "* Preis indikativ — bei Buchung mit Camardine bestätigen.",
       iranja_cta: "Per WhatsApp buchen",
+      tanikely_tagline: "Natürliches Aquarium · Nosy Be",
+      tanikely_duration_label: "Dauer", tanikely_duration: "~6 Stunden",
+      tanikely_price_label: "Ab", tanikely_price: "€45 / Person",
+      tanikely_boat_label: "Bootsfahrt", tanikely_boat: "~35 Min. je Richtung",
+      tanikely_desc: "Nosy Tanikely — Madagaskars schönstes natürliches Aquarium. Eine kleine geschützte Insel 10 km vor Nosy Be, umgeben von den gesündesten Korallen der Region. Setzen Sie die Schnorchelmaske auf und schwimmen Sie innerhalb von Minuten neben grünen Meeresschildkröten und Echten Karettschildkröten — bei einer Sichtweite bis zu 30 Metern. Keine Erfahrung nötig — Schnorcheln für jeden.",
+      tanikely_included_title: "Inbegriffen",
+      tanikely_inc_1: "Bootsfähre (Hin- und Rückfahrt)", tanikely_inc_2: "Strandpicknick", tanikely_inc_3: "Schnorchelausrüstung",
+      tanikely_inc_4: "Parkeintritt", tanikely_inc_5: "Guide", tanikely_inc_6: "Mineralwasser",
+      tanikely_highlights_title: "Highlights",
+      tanikely_hl1_name: "Meeresschildkröten", tanikely_hl1_desc: "Grüne Meeresschildkröten und Echte Karettschildkröten patrouillieren die Seegraswiesen wenige Meter vom Ufer. Sie zu sehen ist fast garantiert.",
+      tanikely_hl2_name: "Natürliches Aquarium", tanikely_hl2_desc: "Das beste Schnorcheln Madagaskars — Korallenriffe beginnen nur 20–30 m vom Strand, mit Clownfischen, Papageifischen, Barrakudas und Moorischen Idolen in kristallklarem Wasser.",
+      tanikely_hl3_name: "Leuchtturm-Wanderung", tanikely_hl3_desc: "Ein kurzer Pfad führt zum Leuchtturm auf dem Hügel, mit weitem Panoramablick auf Nosy Be, Nosy Komba und den endlosen blauen Horizont.",
+      tanikely_hl4_name: "Wilde Lemuren", tanikely_hl4_desc: "Braune Lemuren streifen frei durch den Tropenwald der Insel. Zusammen mit Flughunden teilen sie dieses unbewohnte Paradies mit Ihnen.",
+      tanikely_price_note: "* Preis indikativ — bei Buchung mit Camardine bestätigen.",
+      tanikely_cta: "Per WhatsApp buchen",
       contact_label: "Bereit?", contact_title: "Buchen Sie Ihr Lokobe-Abenteuer",
       contact_desc: "Senden Sie mir eine Nachricht und ich antworte Ihnen innerhalb von 24 Stunden, um Ihre Tour zu bestätigen. Flexible Planung — ich richte mich nach Ihren Reiseplänen.",
       contact_meeting: "Treffpunkt", wa_contact: "Kontakt über WhatsApp", ta_review: "Bewertungen lesen",
@@ -2721,7 +2871,6 @@ border-color: var(--jungle-deep);
   window.addEventListener('scroll', () => {
     const scrolled = window.scrollY > 80;
     nav.classList.toggle('scrolled', scrolled);
-    if (langSwitcher) langSwitcher.classList.toggle('scrolled', scrolled);
   });
 
   // Reveal on scroll
@@ -2901,6 +3050,26 @@ border-color: var(--jungle-deep);
   if (iraModalOverlay) iraModalOverlay.addEventListener('click', closeIraModal);
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && iraModal && iraModal.classList.contains('open')) closeIraModal();
+  });
+
+  const tanModal = document.getElementById('tanModal');
+  const openTanBtn = document.getElementById('openTanModal');
+  const tanModalClose = document.getElementById('tanModalClose');
+  const tanModalOverlay = document.getElementById('tanModalOverlay');
+
+  function openTanModal() {
+    tanModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeTanModal() {
+    tanModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  if (openTanBtn) openTanBtn.addEventListener('click', openTanModal);
+  if (tanModalClose) tanModalClose.addEventListener('click', closeTanModal);
+  if (tanModalOverlay) tanModalOverlay.addEventListener('click', closeTanModal);
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && tanModal && tanModal.classList.contains('open')) closeTanModal();
   });
 </script>
 
