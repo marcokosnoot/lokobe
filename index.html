@@ -1064,7 +1064,7 @@ radial-gradient(ellipse at 80% 50%, rgba(212, 168, 67, 0.08) 0%, transparent 50%
 
 .contact-inner {
 position: relative;
-max-width: 800px;
+max-width: 1040px;
 margin: 0 auto;
 text-align: center;
 }
@@ -1091,6 +1091,9 @@ margin-bottom: 3rem;
 
 .contact-method {
 text-align: center;
+width: 220px;
+flex-shrink: 0;
+word-break: break-word;
 }
 
 .contact-method-icon {
@@ -1123,6 +1126,11 @@ color: var(--warm-gold);
 text-decoration: none;
 font-size: 0.95rem;
 font-weight: 400;
+}
+
+#booking-form {
+max-width: 800px;
+margin: 0 auto;
 }
 
 .contact-form {
@@ -1611,6 +1619,15 @@ flex-direction: column;
 justify-content: flex-end;
 padding: 1.5rem 2rem;
 }
+.tour-modal-photo-credit {
+position: absolute;
+bottom: 0.4rem;
+right: 0.6rem;
+font-size: 0.6rem;
+color: rgba(255,255,255,0.45);
+letter-spacing: 0.02em;
+pointer-events: none;
+}
 .tour-modal-tag {
 font-size: 0.75rem;
 font-weight: 600;
@@ -1712,12 +1729,6 @@ line-height: 1.6;
 color: rgba(11,31,14,0.65);
 margin: 0;
 }
-.tour-modal-note {
-font-size: 0.78rem;
-color: rgba(11,31,14,0.4);
-margin-bottom: 1.5rem;
-font-style: italic;
-}
 .tour-modal-cta {
 display: flex;
 align-items: center;
@@ -1757,9 +1768,9 @@ color: var(--warm-gold);
 border-color: var(--jungle-deep);
 }
 @media (max-width: 600px) {
-.tour-modal-stats { flex-direction: column; }
-.tour-modal-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); padding: 0.75rem; }
-.tour-modal-stat:last-child { border-bottom: none; }
+.tour-modal-stat { padding: 0.7rem 0.3rem; }
+.tour-modal-stat-value { font-size: 0.78rem; }
+.tour-modal-stat-label { font-size: 0.6rem; }
 .tour-modal-list { grid-template-columns: 1fr; }
 .tour-modal-hero { height: 180px; }
 .tour-modal-title { font-size: 1.6rem; }
@@ -1840,7 +1851,7 @@ border-color: var(--jungle-deep);
         <div class="slide-label" data-i18n="slide_3">Camardine &amp; Guests</div>
       </div>
       <div class="slide">
-        <img src="nosy-iranja.jpeg" alt="Nosy Iranja — stunning sandbar connecting two islands" loading="lazy">
+        <img src="NosyIranja2.jpg" alt="Nosy Iranja — stunning sandbar connecting two islands" loading="lazy">
         <div class="slide-label" data-i18n="slide_4">Nosy Iranja</div>
       </div>
       <div class="slider-progress" id="sliderProgress"></div>
@@ -1899,7 +1910,7 @@ border-color: var(--jungle-deep);
 <div class="wildlife-grid">
   <div class="wildlife-card reveal">
     <div class="wildlife-card-img">
-      <img src="chameleon.JPG" alt="Brookesia Chameleon on the forest floor" loading="lazy">
+      <img src="chameleon.JPG" alt="Brookesia Chameleon on the forest floor" loading="lazy" style="object-position: center 55%;">
     </div>
     <div class="wildlife-card-content">
       <h3 data-i18n="wl_chameleon_name">Brookesia Chameleon</h3>
@@ -1909,7 +1920,7 @@ border-color: var(--jungle-deep);
   </div>
   <div class="wildlife-card reveal">
     <div class="wildlife-card-img">
-      <img src="lemur.JPG" alt="Black Lemur in the canopy" loading="lazy">
+      <img src="lemur.JPG" alt="Black Lemur in the canopy" loading="lazy" style="object-position: center 35%;">
     </div>
     <div class="wildlife-card-content">
       <h3 data-i18n="wl_lemur_name">Black Lemur</h3>
@@ -1919,7 +1930,7 @@ border-color: var(--jungle-deep);
   </div>
   <div class="wildlife-card reveal">
     <div class="wildlife-card-img">
-      <img src="gecko.JPG" alt="Leaf-tailed Gecko on a branch" loading="lazy">
+      <img src="gecko.JPG" alt="Leaf-tailed Gecko on a branch" loading="lazy" style="object-position: center 40%;">
     </div>
     <div class="wildlife-card-content">
       <h3 data-i18n="wl_gecko_name">Leaf-tailed Gecko</h3>
@@ -1939,7 +1950,7 @@ border-color: var(--jungle-deep);
   </div>
   <div class="wildlife-card reveal">
     <div class="wildlife-card-img">
-      <img src="owl.JPG" alt="Madagascar Scops Owl perched on a tree" loading="lazy">
+      <img src="owl.JPG" alt="Madagascar Scops Owl perched on a tree" loading="lazy" style="object-position: center 40%;">
     </div>
     <div class="wildlife-card-content">
       <h3 data-i18n="wl_owl_name">Madagascar Scops Owl</h3>
@@ -2100,6 +2111,7 @@ border-color: var(--jungle-deep);
           <div class="scroll-card-body">
             <h3 data-i18n="ot_komba_name">Nosy Komba</h3>
             <p data-i18n="ot_komba_desc">Visit the "Island of Lemurs" — meet friendly black lemurs up close, explore local craft villages, and enjoy a beach lunch on this beautiful island.</p>
+            <button class="scroll-card-details" id="openKombaModal" data-i18n="ot_details">More details</button>
             <a href="https://wa.me/261329953831?text=Hi%20Camardine!%20I'd%20like%20more%20info%20about%20the%20Nosy%20Komba%20tour." target="_blank" class="scroll-card-cta">
               <span data-i18n="ot_ask">Ask for info</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -2194,7 +2206,7 @@ border-color: var(--jungle-deep);
   <div class="tour-modal-card">
     <button class="tour-modal-close" id="iraModalClose" aria-label="Close">&times;</button>
     <div class="tour-modal-hero">
-      <img src="nosy-iranja.jpeg" alt="Nosy Iranja — Turtle Island, Nosy Be, Madagascar">
+      <img src="NosyIranja2.jpg" alt="Nosy Iranja — Turtle Island, Nosy Be, Madagascar">
       <div class="tour-modal-hero-overlay">
         <div class="tour-modal-tag" data-i18n="iranja_tagline">Turtle Island · Nosy Be</div>
         <h2 id="iraModalTitle" class="tour-modal-title">Nosy Iranja</h2>
@@ -2263,10 +2275,91 @@ border-color: var(--jungle-deep);
           </div>
         </div>
       </div>
-      <p class="tour-modal-note" data-i18n="iranja_price_note">* Price indicative — confirm with Camardine when booking.</p>
       <a href="https://wa.me/261329953831?text=Hi%20Camardine!%20I'd%20like%20to%20book%20the%20Nosy%20Iranja%20tour." target="_blank" class="tour-modal-cta">
         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         <span data-i18n="iranja_cta">Book via WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Nosy Komba Modal -->
+<div id="kombaModal" class="tour-modal" role="dialog" aria-modal="true" aria-labelledby="kombaModalTitle">
+  <div class="tour-modal-overlay" id="kombaModalOverlay"></div>
+  <div class="tour-modal-card">
+    <button class="tour-modal-close" id="kombaModalClose" aria-label="Close">&times;</button>
+    <div class="tour-modal-hero">
+      <img src="MakiNosyKomba.jpg" alt="Black lemur in the jungle of Nosy Komba, Madagascar" loading="lazy" style="object-position: center 25%;">
+      <span class="tour-modal-photo-credit">Photo: "Maki Nosy Komba" by Lebelot, CC BY-SA 3.0</span>
+      <div class="tour-modal-hero-overlay">
+        <div class="tour-modal-tag" data-i18n="komba_tagline">Lemur Island · Nosy Be</div>
+        <h2 id="kombaModalTitle" class="tour-modal-title">Nosy Komba</h2>
+      </div>
+    </div>
+    <div class="tour-modal-content">
+      <div class="tour-modal-stats">
+        <div class="tour-modal-stat">
+          <span class="tour-modal-stat-icon">⏱️</span>
+          <span class="tour-modal-stat-label" data-i18n="komba_duration_label">Duration</span>
+          <span class="tour-modal-stat-value" data-i18n="komba_duration">~7 hours</span>
+        </div>
+        <div class="tour-modal-stat">
+          <span class="tour-modal-stat-icon">💰</span>
+          <span class="tour-modal-stat-label" data-i18n="komba_price_label">From</span>
+          <span class="tour-modal-stat-value" data-i18n="komba_price">€40 / person</span>
+        </div>
+        <div class="tour-modal-stat">
+          <span class="tour-modal-stat-icon">🚤</span>
+          <span class="tour-modal-stat-label" data-i18n="komba_boat_label">Boat ride</span>
+          <span class="tour-modal-stat-value" data-i18n="komba_boat">~30 min each way</span>
+        </div>
+      </div>
+      <p class="tour-modal-desc" data-i18n="komba_desc">Nosy Komba — Madagascar's legendary Lemur Island. A volcanic island with no cars, no crowds, and lush jungle trails home to the iconic black lemur. From the summit, panoramic views stretch over Nosy Be and the turquoise sea. Wander through the craft village of Ampangorina and bring home hand-embroidered linens and carved wooden masks.</p>
+      <div class="tour-modal-section">
+        <h3 data-i18n="komba_included_title">What's Included</h3>
+        <ul class="tour-modal-list">
+          <li data-i18n="komba_inc_1">Boat transfer (return)</li>
+          <li data-i18n="komba_inc_2">Malagasy lunch</li>
+          <li data-i18n="komba_inc_3">Village guide</li>
+          <li data-i18n="komba_inc_4">Bottled water</li>
+        </ul>
+      </div>
+      <div class="tour-modal-section">
+        <h3 data-i18n="komba_highlights_title">Highlights</h3>
+        <div class="tour-modal-highlights">
+          <div class="tour-modal-hl">
+            <span class="tour-modal-hl-icon">🦍</span>
+            <div>
+              <strong data-i18n="komba_hl1_name">Black Lemurs</strong>
+              <p data-i18n="komba_hl1_desc">Endemic to Nosy Komba and Nosy Be. Males are jet black with amber eyes; females are reddish-brown — you'll encounter them up close on the forest trails.</p>
+            </div>
+          </div>
+          <div class="tour-modal-hl">
+            <span class="tour-modal-hl-icon">🌿</span>
+            <div>
+              <strong data-i18n="komba_hl2_name">Jungle Trek</strong>
+              <p data-i18n="komba_hl2_desc">Steep forest paths wind through vanilla, cacao, and coffee plants. Spot chameleons, exotic birds, and giant jackfruit along the way.</p>
+            </div>
+          </div>
+          <div class="tour-modal-hl">
+            <span class="tour-modal-hl-icon">🏔️</span>
+            <div>
+              <strong data-i18n="komba_hl3_name">Panoramic Summit</strong>
+              <p data-i18n="komba_hl3_desc">Reach the top of the island for sweeping 360° views over Nosy Komba's peaks, Nosy Be, and the endless Indian Ocean.</p>
+            </div>
+          </div>
+          <div class="tour-modal-hl">
+            <span class="tour-modal-hl-icon">🛍️</span>
+            <div>
+              <strong data-i18n="komba_hl4_name">Craft Village</strong>
+              <p data-i18n="komba_hl4_desc">Stroll through Ampangorina's vibrant market — hand-embroidered tablecloths, carved wooden masks, lambas, and local art. Craftsmanship passed down for generations.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="https://wa.me/261329953831?text=Hi%20Camardine!%20I'd%20like%20to%20book%20the%20Nosy%20Komba%20tour." target="_blank" class="tour-modal-cta">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span data-i18n="komba_cta">Book via WhatsApp</span>
       </a>
     </div>
   </div>
@@ -2348,7 +2441,6 @@ border-color: var(--jungle-deep);
           </div>
         </div>
       </div>
-      <p class="tour-modal-note" data-i18n="tanikely_price_note">* Price indicative — confirm with Camardine when booking.</p>
       <a href="https://wa.me/261329953831?text=Hi%20Camardine!%20I'd%20like%20to%20book%20the%20Nosy%20Tanikely%20tour." target="_blank" class="tour-modal-cta">
         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         <span data-i18n="tanikely_cta">Book via WhatsApp</span>
@@ -2365,22 +2457,22 @@ border-color: var(--jungle-deep);
       <div class="section-label" data-i18n="contact_label">Ready?</div>
       <h2 class="section-title" data-i18n="contact_title">Book Your Lokobe Adventure</h2>
       <p class="contact-desc" data-i18n="contact_desc">
-        Send me a message and I'll get back to you within 24 hours to confirm your tour. 
+        Send me a message and I'll get back to you within 24 hours to confirm your tour.<br>
         Flexible scheduling — I'll work around your travel plans.
       </p>
     </div>
 
 <div class="contact-methods reveal">
-  <div class="contact-method">
+  <a href="https://wa.me/261329953831?text=Hi%20Camardine!%20I'm%20interested%20in%20booking%20a%20Lokobe%20tour." target="_blank" class="contact-method" style="text-decoration:none; color:inherit;">
     <div class="contact-method-icon">💬</div>
     <div class="contact-method-label">WhatsApp</div>
-    <a href="https://wa.me/261329953831" target="_blank" class="contact-method-value">+261 32 99 538 31</a>
-  </div>
-  <div class="contact-method">
+    <span class="contact-method-value">+261 32 99 538 31</span>
+  </a>
+  <a href="mailto:saidcamardine197@gmail.com" class="contact-method" style="text-decoration:none; color:inherit;">
     <div class="contact-method-icon">✉️</div>
     <div class="contact-method-label">Email</div>
-    <a href="mailto:saidcamardine197@gmail.com" class="contact-method-value">saidcamardine197@gmail.com</a>
-  </div>
+    <span class="contact-method-value">saidcamardine197@gmail.com</span>
+  </a>
   <a href="https://maps.app.goo.gl/7uMv89VVyTpLzvgN8?g_st=ic" target="_blank" class="contact-method" style="text-decoration:none; color:inherit;">
     <div class="contact-method-icon">📍</div>
     <div class="contact-method-label" data-i18n="contact_meeting">Meeting Point</div>
@@ -2411,7 +2503,7 @@ border-color: var(--jungle-deep);
   </div>
   <div>
     <label>Email</label>
-    <input type="email" name="email" placeholder="jane@email.com" required>
+    <input type="email" name="email" data-i18n-placeholder="form_email_ph" placeholder="jane@email.com" required>
   </div>
   <div>
     <label data-i18n="form_date">Preferred Date</label>
@@ -2498,6 +2590,19 @@ border-color: var(--jungle-deep);
       ot_amber_name: "Amber Mountain", ot_amber_desc: "Explore Montagne d'Ambre National Park — lush rainforest, cascading waterfalls, and rare chameleons hidden in one of Madagascar's most biodiverse parks.",
       ot_ankarana_name: "Ankarana National Park", ot_ankarana_desc: "Discover the legendary tsingy limestone forests, underground rivers, and sacred caves of Ankarana — home to crowned lemurs and hundreds of bat species.",
       ot_ask: "Ask for info", ot_details: "More details", swipe_explore: "Swipe to explore",
+      komba_tagline: "Lemur Island · Nosy Be",
+      komba_duration_label: "Duration", komba_duration: "~7 hours",
+      komba_price_label: "From", komba_price: "€40 / person",
+      komba_boat_label: "Boat ride", komba_boat: "~30 min each way",
+      komba_desc: "Nosy Komba — Madagascar's legendary Lemur Island. A volcanic island with no cars, no crowds, and lush jungle trails home to the iconic black lemur. From the summit, panoramic views stretch over Nosy Be and the turquoise sea. Wander through the craft village of Ampangorina and bring home hand-embroidered linens and carved wooden masks.",
+      komba_included_title: "What's Included",
+      komba_inc_1: "Boat transfer (return)", komba_inc_2: "Malagasy lunch", komba_inc_3: "Village guide", komba_inc_4: "Bottled water",
+      komba_highlights_title: "Highlights",
+      komba_hl1_name: "Black Lemurs", komba_hl1_desc: "Endemic to Nosy Komba and Nosy Be. Males are jet black with amber eyes; females are reddish-brown — you'll encounter them up close on the forest trails.",
+      komba_hl2_name: "Jungle Trek", komba_hl2_desc: "Steep forest paths wind through vanilla, cacao, and coffee plants. Spot chameleons, exotic birds, and giant jackfruit along the way.",
+      komba_hl3_name: "Panoramic Summit", komba_hl3_desc: "Reach the top of the island for sweeping 360° views over Nosy Komba's peaks, Nosy Be, and the endless Indian Ocean.",
+      komba_hl4_name: "Craft Village", komba_hl4_desc: "Stroll through Ampangorina's vibrant market — hand-embroidered tablecloths, carved wooden masks, lambas, and local art. Craftsmanship passed down for generations.",
+      komba_cta: "Book via WhatsApp",
       iranja_tagline: "Turtle Island · Nosy Be",
       iranja_duration_label: "Duration", iranja_duration: "~8 hours",
       iranja_price_label: "From", iranja_price: "€60 / person",
@@ -2511,7 +2616,6 @@ border-color: var(--jungle-deep);
       iranja_hl2_name: "Sea Turtles", iranja_hl2_desc: "Swim and snorkel alongside sea turtles in crystal-clear water with visibility up to 20 metres. This is their nesting island.",
       iranja_hl3_name: "Fishing Village", iranja_hl3_desc: "A traditional Malagasy fishing village on the main island — meet local families, taste fresh seafood, and see authentic island life.",
       iranja_hl4_name: "Historic Lighthouse", iranja_hl4_desc: "Climb to the lighthouse (reportedly designed by Gustave Eiffel) for a breathtaking panoramic view of both islets and the open ocean.",
-      iranja_price_note: "* Price indicative — confirm with Camardine when booking.",
       iranja_cta: "Book via WhatsApp",
       tanikely_tagline: "Natural Aquarium · Nosy Be",
       tanikely_duration_label: "Duration", tanikely_duration: "~6 hours",
@@ -2526,12 +2630,11 @@ border-color: var(--jungle-deep);
       tanikely_hl2_name: "Natural Aquarium", tanikely_hl2_desc: "The best snorkeling in Madagascar — coral gardens start just 20–30 m from the beach, with clownfish, parrotfish, barracuda, and moorish idol in crystal-clear water.",
       tanikely_hl3_name: "Lighthouse Hike", tanikely_hl3_desc: "A short trail leads to the hilltop lighthouse with sweeping panoramic views over Nosy Be, Nosy Komba, and the endless blue horizon.",
       tanikely_hl4_name: "Wild Lemurs", tanikely_hl4_desc: "Brown lemurs roam freely through the island's tropical forest. Along with flying foxes, they share this uninhabited paradise with you.",
-      tanikely_price_note: "* Price indicative — confirm with Camardine when booking.",
       tanikely_cta: "Book via WhatsApp",
       contact_label: "Ready?", contact_title: "Book Your Lokobe Adventure",
-      contact_desc: "Send me a message and I'll get back to you within 24 hours to confirm your tour. Flexible scheduling — I'll work around your travel plans.",
+      contact_desc: "Send me a message and I'll get back to you within 24 hours to confirm your tour.<br>Flexible scheduling — I'll work around your travel plans.",
       contact_meeting: "Meeting Point", wa_contact: "Contact via WhatsApp", ta_review: "Read our reviews",
-      form_name: "Your Name", form_name_ph: "Jane Smith", form_date: "Preferred Date", form_people: "Number of People",
+      form_name: "Your Name", form_name_ph: "Jane Smith", form_email_ph: "jane@email.com", form_date: "Preferred Date", form_people: "Number of People",
       form_message: "Message", form_message_ph: "Any special requests or questions?", form_submit: "Send Booking Request",
       form_success: "Thank you for your booking request! I'll get back to you within 24 hours to confirm your tour.",
       footer_thanks: "Thank you", footer_rights: "All rights reserved.", footer_made: "Made with ❤️ on the island of perfume."
@@ -2583,6 +2686,19 @@ border-color: var(--jungle-deep);
       ot_amber_name: "Montagne d'Ambre", ot_amber_desc: "Explorez le Parc National de la Montagne d'Ambre — forêt tropicale luxuriante, cascades et caméléons rares dans l'un des parcs les plus riches en biodiversité de Madagascar.",
       ot_ankarana_name: "Parc National d'Ankarana", ot_ankarana_desc: "Découvrez les forêts de tsingy légendaires, les rivières souterraines et les grottes sacrées d'Ankarana — refuge des lémuriens couronnés et de centaines d'espèces de chauves-souris.",
       ot_ask: "Demander des infos", ot_details: "Plus de détails", swipe_explore: "Faites défiler pour explorer",
+      komba_tagline: "Île aux Lémuriens · Nosy Be",
+      komba_duration_label: "Durée", komba_duration: "~7 heures",
+      komba_price_label: "À partir de", komba_price: "40€ / personne",
+      komba_boat_label: "Trajet en bateau", komba_boat: "~30 min aller-retour",
+      komba_desc: "Nosy Komba — la légendaire Île aux Lémuriens de Madagascar. Une île volcanique sans voitures, sans foule, avec des sentiers de jungle luxuriants abritant l'emblématique lémur noir. Du sommet, la vue panoramique s'étend sur Nosy Be et la mer turquoise. Flânez dans le village artisanal d'Ampangorina et repartez avec des linges brodés main et des masques en bois sculpté.",
+      komba_included_title: "Ce qui est inclus",
+      komba_inc_1: "Transfert en bateau (aller-retour)", komba_inc_2: "Déjeuner malgache", komba_inc_3: "Guide local", komba_inc_4: "Eau en bouteille",
+      komba_highlights_title: "Highlights",
+      komba_hl1_name: "Lémurs Noirs", komba_hl1_desc: "Endémiques à Nosy Komba et Nosy Be. Les mâles sont noirs de jais aux yeux ambrés ; les femelles brun-rougeâtre — vous les rencontrerez de près sur les sentiers forestiers.",
+      komba_hl2_name: "Randonnée en Jungle", komba_hl2_desc: "Des sentiers forestiers escarpés traversent vanille, cacao et caféiers. Repérez caméléons, oiseaux exotiques et gigantesques fruits à pain.",
+      komba_hl3_name: "Sommet Panoramique", komba_hl3_desc: "Au sommet, une vue à 360° s'étend sur les pics de Nosy Komba, Nosy Be et l'immense Océan Indien.",
+      komba_hl4_name: "Village Artisanal", komba_hl4_desc: "Flânez dans le marché animé d'Ampangorina — nappes brodées main, masques en bois sculpté, lambas et art local. Artisanat transmis de génération en génération.",
+      komba_cta: "Réserver via WhatsApp",
       iranja_tagline: "Île aux Tortues · Nosy Be",
       iranja_duration_label: "Durée", iranja_duration: "~8 heures",
       iranja_price_label: "À partir de", iranja_price: "60€ / personne",
@@ -2596,7 +2712,6 @@ border-color: var(--jungle-deep);
       iranja_hl2_name: "Tortues Marines", iranja_hl2_desc: "Nagez et plongez en apnée aux côtés de tortues marines dans une eau cristalline avec une visibilité jusqu'à 20 mètres. C'est leur île de nidification.",
       iranja_hl3_name: "Village de Pêcheurs", iranja_hl3_desc: "Un village de pêcheurs malgache traditionnel sur l'île principale — rencontrez des familles locales, goûtez les fruits de mer frais et vivez la vie authentique de l'île.",
       iranja_hl4_name: "Phare Historique", iranja_hl4_desc: "Montez jusqu'au phare (prétendument conçu par Gustave Eiffel) pour une vue panoramique à couper le souffle sur les deux îlots et l'océan.",
-      iranja_price_note: "* Prix indicatif — à confirmer avec Camardine lors de la réservation.",
       iranja_cta: "Réserver via WhatsApp",
       tanikely_tagline: "Aquarium Naturel · Nosy Be",
       tanikely_duration_label: "Durée", tanikely_duration: "~6 heures",
@@ -2611,12 +2726,11 @@ border-color: var(--jungle-deep);
       tanikely_hl2_name: "Aquarium Naturel", tanikely_hl2_desc: "Le meilleur snorkeling de Madagascar — les jardins de coraux commencent à 20–30 m de la plage, avec poissons-clowns, perroquets, barracudas et idoles des Maures dans une eau cristalline.",
       tanikely_hl3_name: "Randonnée au Phare", tanikely_hl3_desc: "Un court sentier mène au phare au sommet de la colline, avec vue panoramique sur Nosy Be, Nosy Komba et l'horizon bleu infini.",
       tanikely_hl4_name: "Lémuriens Sauvages", tanikely_hl4_desc: "Des lémuriens bruns se promènent librement dans la forêt tropicale de l'île. Avec les roussettes, ils partagent ce paradis inhabité avec vous.",
-      tanikely_price_note: "* Prix indicatif — à confirmer avec Camardine lors de la réservation.",
       tanikely_cta: "Réserver via WhatsApp",
       contact_label: "Prêt ?", contact_title: "Réservez Votre Aventure à Lokobe",
-      contact_desc: "Envoyez-moi un message et je vous répondrai sous 24 heures pour confirmer votre excursion. Planning flexible — je m'adapte à vos plans de voyage.",
+      contact_desc: "Envoyez-moi un message et je vous répondrai sous 24 heures pour confirmer votre excursion.<br>Planning flexible — je m'adapte à vos plans de voyage.",
       contact_meeting: "Point de Rencontre", wa_contact: "Contacter via WhatsApp", ta_review: "Lire nos avis",
-      form_name: "Votre Nom", form_name_ph: "Marie Dupont", form_date: "Date Souhaitée", form_people: "Nombre de Personnes",
+      form_name: "Votre Nom", form_name_ph: "Marie Dupont", form_email_ph: "marie@email.com", form_date: "Date Souhaitée", form_people: "Nombre de Personnes",
       form_message: "Message", form_message_ph: "Des demandes spéciales ou des questions ?", form_submit: "Envoyer la Demande de Réservation",
       form_success: "Merci pour votre demande de réservation ! Je vous répondrai sous 24 heures pour confirmer votre excursion.",
       footer_thanks: "Merci", footer_rights: "Tous droits réservés.", footer_made: "Fait avec ❤️ sur l'île aux parfums."
@@ -2668,6 +2782,19 @@ border-color: var(--jungle-deep);
       ot_amber_name: "Montagna d'Ambra", ot_amber_desc: "Esplorate il Parco Nazionale della Montagna d'Ambra — foresta pluviale lussureggiante, cascate e camaleonti rari in uno dei parchi più ricchi di biodiversità del Madagascar.",
       ot_ankarana_name: "Parco Nazionale di Ankarana", ot_ankarana_desc: "Scoprite le leggendarie foreste di tsingy, i fiumi sotterranei e le grotte sacre di Ankarana — rifugio dei lemuri coronati e di centinaia di specie di pipistrelli.",
       ot_ask: "Chiedi informazioni", ot_details: "Maggiori dettagli", swipe_explore: "Scorri per esplorare",
+      komba_tagline: "Isola dei Lemuri · Nosy Be",
+      komba_duration_label: "Durata", komba_duration: "~7 ore",
+      komba_price_label: "A partire da", komba_price: "€40 / persona",
+      komba_boat_label: "Traversata in barca", komba_boat: "~30 min per tratta",
+      komba_desc: "Nosy Komba — la leggendaria Isola dei Lemuri del Madagascar. Un'isola vulcanica senza automobili, senza folla, con sentieri nella giungla rigogliosa che ospitano il leggendario lemure nero. Dalla cima, una vista panoramica si estende su Nosy Be e il mare turchese. Passeggiate nel villaggio artigianale di Ampangorina e portate a casa lenzuola ricamate a mano e maschere di legno intagliato.",
+      komba_included_title: "Cosa è Incluso",
+      komba_inc_1: "Trasferimento in barca (andata e ritorno)", komba_inc_2: "Pranzo malgascio", komba_inc_3: "Guida locale", komba_inc_4: "Acqua in bottiglia",
+      komba_highlights_title: "Highlights",
+      komba_hl1_name: "Lemuri Neri", komba_hl1_desc: "Endemici di Nosy Komba e Nosy Be. I maschi sono neri come l'ebano con occhi ambrati; le femmine sono bruno-rossicce — li incontrerete da vicino sui sentieri forestali.",
+      komba_hl2_name: "Trekking nella Giungla", komba_hl2_desc: "Sentieri forestali ripidi attraversano piante di vaniglia, cacao e caffè. Avvistate camaleonti, uccelli esotici e frutti del pane giganti lungo il percorso.",
+      komba_hl3_name: "Vetta Panoramica", komba_hl3_desc: "Raggiungete la cima per una vista a 360° sulle vette di Nosy Komba, Nosy Be e l'Oceano Indiano infinito.",
+      komba_hl4_name: "Villaggio Artigianale", komba_hl4_desc: "Passeggiate nel vivace mercato di Ampangorina — tovaglie ricamate a mano, maschere di legno intagliato, lamba e arte locale. Artigianato tramandato di generazione in generazione.",
+      komba_cta: "Prenota via WhatsApp",
       iranja_tagline: "Isola delle Tartarughe · Nosy Be",
       iranja_duration_label: "Durata", iranja_duration: "~8 ore",
       iranja_price_label: "A partire da", iranja_price: "€60 / persona",
@@ -2681,7 +2808,6 @@ border-color: var(--jungle-deep);
       iranja_hl2_name: "Tartarughe Marine", iranja_hl2_desc: "Nuotate e fate snorkeling accanto a tartarughe marine in acque cristalline con visibilità fino a 20 metri. Quest'isola è il loro sito di nidificazione.",
       iranja_hl3_name: "Villaggio di Pescatori", iranja_hl3_desc: "Un tradizionale villaggio di pescatori malgascio sull'isola principale — incontrate famiglie locali, assaggiate frutti di mare freschi e vivete l'autentica vita isolana.",
       iranja_hl4_name: "Faro Storico", iranja_hl4_desc: "Salite fino al faro (presumibilmente progettato da Gustave Eiffel) per una vista panoramica mozzafiato su entrambi gli isolotti e sull'oceano.",
-      iranja_price_note: "* Prezzo indicativo — da confermare con Camardine alla prenotazione.",
       iranja_cta: "Prenota via WhatsApp",
       tanikely_tagline: "Acquario Naturale · Nosy Be",
       tanikely_duration_label: "Durata", tanikely_duration: "~6 ore",
@@ -2696,12 +2822,11 @@ border-color: var(--jungle-deep);
       tanikely_hl2_name: "Acquario Naturale", tanikely_hl2_desc: "Il miglior snorkeling del Madagascar — giardini di corallo iniziano a soli 20–30 m dalla spiaggia, con pesci pagliaccio, pappagalli, barracuda e idoli dei Mori in acque cristalline.",
       tanikely_hl3_name: "Escursione al Faro", tanikely_hl3_desc: "Un breve sentiero conduce al faro in cima alla collina, con ampia vista panoramica su Nosy Be, Nosy Komba e l'orizzonte blu infinito.",
       tanikely_hl4_name: "Lemuri Selvatici", tanikely_hl4_desc: "I lemuri bruni si muovono liberi nella foresta tropicale dell'isola. Insieme alle volpi volanti, condividono con voi questo paradiso disabitato.",
-      tanikely_price_note: "* Prezzo indicativo — da confermare con Camardine alla prenotazione.",
       tanikely_cta: "Prenota via WhatsApp",
       contact_label: "Pronti?", contact_title: "Prenota la Tua Avventura a Lokobe",
-      contact_desc: "Mandami un messaggio e ti risponderò entro 24 ore per confermare la tua escursione. Orari flessibili — mi adatto ai tuoi piani di viaggio.",
+      contact_desc: "Mandami un messaggio e ti risponderò entro 24 ore per confermare la tua escursione.<br>Orari flessibili — mi adatto ai tuoi piani di viaggio.",
       contact_meeting: "Punto d'Incontro", wa_contact: "Contatta via WhatsApp", ta_review: "Leggi le recensioni",
-      form_name: "Il Tuo Nome", form_name_ph: "Maria Rossi", form_date: "Data Preferita", form_people: "Numero di Persone",
+      form_name: "Il Tuo Nome", form_name_ph: "Maria Rossi", form_email_ph: "maria@email.com", form_date: "Data Preferita", form_people: "Numero di Persone",
       form_message: "Messaggio", form_message_ph: "Richieste speciali o domande?", form_submit: "Invia Richiesta di Prenotazione",
       form_success: "Grazie per la tua richiesta di prenotazione! Ti risponderò entro 24 ore per confermare la tua escursione.",
       footer_thanks: "Grazie", footer_rights: "Tutti i diritti riservati.", footer_made: "Fatto con ❤️ sull'isola dei profumi."
@@ -2753,6 +2878,19 @@ border-color: var(--jungle-deep);
       ot_amber_name: "Bernsteinberg (Montagne d'Ambre)", ot_amber_desc: "Erkunden Sie den Nationalpark Montagne d'Ambre — üppiger Regenwald, rauschende Wasserfälle und seltene Chamäleons in einem der artenreichsten Parks Madagaskars.",
       ot_ankarana_name: "Nationalpark Ankarana", ot_ankarana_desc: "Entdecken Sie die legendären Tsingy-Kalksteinwälder, unterirdischen Flüsse und heiligen Höhlen von Ankarana — Heimat von Kronlemuren und Hunderten von Fledermausarten.",
       ot_ask: "Info anfragen", ot_details: "Mehr Details", swipe_explore: "Wischen zum Entdecken",
+      komba_tagline: "Lémureninsel · Nosy Be",
+      komba_duration_label: "Dauer", komba_duration: "~7 Stunden",
+      komba_price_label: "Ab", komba_price: "€40 / Person",
+      komba_boat_label: "Bootsfahrt", komba_boat: "~30 Min. je Richtung",
+      komba_desc: "Nosy Komba — Madagaskars legendäre Lémureninsel. Eine Vulkaninsel ohne Autos, ohne Trubel und mit üppigen Dschungelpfaden, auf denen der ikonische Schwarze Lemur zu Hause ist. Vom Gipfel aus bietet sich ein Panoramablick über Nosy Be und das türkisfarbene Meer. Schlendern Sie durch das Kunsthandwerksdorf Ampangorina und nehmen Sie handbestickte Tischdecken und geschnitzte Holzmasken mit nach Hause.",
+      komba_included_title: "Inbegriffen",
+      komba_inc_1: "Bootsfähre (Hin- und Rückfahrt)", komba_inc_2: "Madagassisches Mittagessen", komba_inc_3: "Lokaler Guide", komba_inc_4: "Mineralwasser",
+      komba_highlights_title: "Highlights",
+      komba_hl1_name: "Schwarze Lemuren", komba_hl1_desc: "Endemisch auf Nosy Komba und Nosy Be. Männchen sind pechschwarz mit bernsteinfarbenen Augen; Weibchen rotbraun — Sie werden ihnen auf den Waldpfaden begegnen.",
+      komba_hl2_name: "Dschungel-Wanderung", komba_hl2_desc: "Steile Waldpfade führen durch Vanille-, Kakao- und Kaffeepflanzen. Entdecken Sie Chamäleons, exotische Vögel und riesige Jackfrüchte.",
+      komba_hl3_name: "Panorama-Gipfel", komba_hl3_desc: "Erreichen Sie den Gipfel für einen 360°-Blick über Nosy Kombas Gipfel, Nosy Be und den endlosen Indischen Ozean.",
+      komba_hl4_name: "Kunsthandwerksdorf", komba_hl4_desc: "Schlendern Sie über den lebhaften Markt von Ampangorina — handbesticktes Leinenzeug, geschnitzte Holzmasken, Lambas und lokale Kunst. Handwerkskunst, die seit Generationen weitergegeben wird.",
+      komba_cta: "Per WhatsApp buchen",
       iranja_tagline: "Schildkröteninsel · Nosy Be",
       iranja_duration_label: "Dauer", iranja_duration: "~8 Stunden",
       iranja_price_label: "Ab", iranja_price: "€60 / Person",
@@ -2766,7 +2904,6 @@ border-color: var(--jungle-deep);
       iranja_hl2_name: "Meeresschildkröten", iranja_hl2_desc: "Schwimmen und schnorcheln Sie neben Meeresschildkröten in kristallklarem Wasser mit einer Sichtweite bis zu 20 Metern. Diese Insel ist ihr Nistplatz.",
       iranja_hl3_name: "Fischerdorf", iranja_hl3_desc: "Ein traditionelles madagassisches Fischerdorf auf der Hauptinsel — treffen Sie lokale Familien, kosten Sie frische Meeresfrüchte und erleben Sie authentisches Inselleben.",
       iranja_hl4_name: "Historischer Leuchtturm", iranja_hl4_desc: "Besteigen Sie den Leuchtturm (angeblich von Gustave Eiffel entworfen) für einen atemberaubenden Panoramablick auf beide Inselchen und den Ozean.",
-      iranja_price_note: "* Preis indikativ — bei Buchung mit Camardine bestätigen.",
       iranja_cta: "Per WhatsApp buchen",
       tanikely_tagline: "Natürliches Aquarium · Nosy Be",
       tanikely_duration_label: "Dauer", tanikely_duration: "~6 Stunden",
@@ -2781,12 +2918,11 @@ border-color: var(--jungle-deep);
       tanikely_hl2_name: "Natürliches Aquarium", tanikely_hl2_desc: "Das beste Schnorcheln Madagaskars — Korallenriffe beginnen nur 20–30 m vom Strand, mit Clownfischen, Papageifischen, Barrakudas und Moorischen Idolen in kristallklarem Wasser.",
       tanikely_hl3_name: "Leuchtturm-Wanderung", tanikely_hl3_desc: "Ein kurzer Pfad führt zum Leuchtturm auf dem Hügel, mit weitem Panoramablick auf Nosy Be, Nosy Komba und den endlosen blauen Horizont.",
       tanikely_hl4_name: "Wilde Lemuren", tanikely_hl4_desc: "Braune Lemuren streifen frei durch den Tropenwald der Insel. Zusammen mit Flughunden teilen sie dieses unbewohnte Paradies mit Ihnen.",
-      tanikely_price_note: "* Preis indikativ — bei Buchung mit Camardine bestätigen.",
       tanikely_cta: "Per WhatsApp buchen",
       contact_label: "Bereit?", contact_title: "Buchen Sie Ihr Lokobe-Abenteuer",
-      contact_desc: "Senden Sie mir eine Nachricht und ich antworte Ihnen innerhalb von 24 Stunden, um Ihre Tour zu bestätigen. Flexible Planung — ich richte mich nach Ihren Reiseplänen.",
+      contact_desc: "Senden Sie mir eine Nachricht und ich antworte Ihnen innerhalb von 24 Stunden, um Ihre Tour zu bestätigen.<br>Flexible Planung — ich richte mich nach Ihren Reiseplänen.",
       contact_meeting: "Treffpunkt", wa_contact: "Kontakt über WhatsApp", ta_review: "Bewertungen lesen",
-      form_name: "Ihr Name", form_name_ph: "Anna Schmidt", form_date: "Wunschdatum", form_people: "Anzahl Personen",
+      form_name: "Ihr Name", form_name_ph: "Anna Schmidt", form_email_ph: "anna@email.com", form_date: "Wunschdatum", form_people: "Anzahl Personen",
       form_message: "Nachricht", form_message_ph: "Besondere Wünsche oder Fragen?", form_submit: "Buchungsanfrage Senden",
       form_success: "Vielen Dank für Ihre Buchungsanfrage! Ich melde mich innerhalb von 24 Stunden bei Ihnen, um Ihre Tour zu bestätigen.",
       footer_thanks: "Danke", footer_rights: "Alle Rechte vorbehalten.", footer_made: "Gemacht mit ❤️ auf der Insel der Düfte."
@@ -3029,6 +3165,27 @@ border-color: var(--jungle-deep);
 
     startAutoplay();
   }
+
+  // ─── NOSY KOMBA MODAL ───
+  const kombaModal = document.getElementById('kombaModal');
+  const openKombaBtn = document.getElementById('openKombaModal');
+  const kombaModalClose = document.getElementById('kombaModalClose');
+  const kombaModalOverlay = document.getElementById('kombaModalOverlay');
+
+  function openKombaModal() {
+    kombaModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeKombaModal() {
+    kombaModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  if (openKombaBtn) openKombaBtn.addEventListener('click', openKombaModal);
+  if (kombaModalClose) kombaModalClose.addEventListener('click', closeKombaModal);
+  if (kombaModalOverlay) kombaModalOverlay.addEventListener('click', closeKombaModal);
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && kombaModal && kombaModal.classList.contains('open')) closeKombaModal();
+  });
 
   // ─── NOSY IRANJA MODAL ───
   const iraModal = document.getElementById('iraModal');
