@@ -195,6 +195,7 @@ z-index: 9999;
   cursor: pointer;
   margin-left: 1.5rem;
   flex-shrink: 0;
+  position: relative;
 }
 
 nav.scrolled .lang-switcher {
@@ -228,25 +229,52 @@ nav.scrolled .lang-switcher {
   pointer-events: auto;
 }
 
-/* When switcher is open, show all buttons */
-.lang-switcher.open {
-  gap: 0.3rem;
+/* Dropdown trigger: wraps active flag + chevron */
+.lang-trigger {
+  display: flex;
+  align-items: center;
+  gap: 2px;
 }
 
-.lang-switcher.open .lang-btn {
+/* Dropdown panel */
+.lang-options {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  flex-direction: column;
+  gap: 0.25rem;
+  background: rgba(11, 31, 14, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 0.35rem;
+  border-radius: 6px;
+  border: 1px solid rgba(232, 197, 109, 0.15);
+  z-index: 200;
+  align-items: center;
+}
+
+.lang-switcher.open .lang-options {
+  display: flex;
+}
+
+/* Option buttons inside dropdown */
+.lang-btn.lang-opt {
+  width: auto;
+  overflow: visible;
   opacity: 0.45;
   filter: grayscale(40%);
-  width: auto;
   pointer-events: auto;
 }
 
-.lang-switcher.open .lang-btn:hover {
+.lang-btn.lang-opt:hover {
   opacity: 0.85;
   filter: grayscale(0%);
   transform: scale(1.12);
 }
 
-.lang-switcher.open .lang-btn.active {
+.lang-btn.lang-opt.active {
   opacity: 1;
   filter: grayscale(0%);
   border-color: var(--golden-sun);
@@ -1556,6 +1584,7 @@ z-index: 9000;
 align-items: center;
 justify-content: center;
 padding: 1rem;
+overscroll-behavior: none;
 }
 .tour-modal.open { display: flex; }
 .tour-modal-overlay {
@@ -1603,6 +1632,9 @@ position: relative;
 height: 240px;
 overflow: hidden;
 border-radius: 16px 16px 0 0;
+}
+.tour-modal-hero picture {
+display: contents;
 }
 .tour-modal-hero img {
 width: 100%;
@@ -1793,19 +1825,35 @@ border-color: var(--jungle-deep);
     <li><a href="#book" data-i18n="nav_book">Book Now</a></li>
   </ul>
   <div class="lang-switcher" id="langSwitcher">
-    <button class="lang-btn active" data-lang="en" aria-label="English" title="English">
-      <svg class="flag-img" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg"><clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#s)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></svg>
-    </button>
-    <button class="lang-btn" data-lang="fr" aria-label="Français" title="Français">
-      <svg class="flag-img" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="40" fill="#002395"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#ED2939"/></svg>
-    </button>
-    <button class="lang-btn" data-lang="it" aria-label="Italiano" title="Italiano">
-      <svg class="flag-img" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="40" fill="#009246"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#CE2B37"/></svg>
-    </button>
-    <button class="lang-btn" data-lang="de" aria-label="Deutsch" title="Deutsch">
-      <svg class="flag-img" viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="12" fill="#000"/><rect y="12" width="60" height="12" fill="#DD0000"/><rect y="24" width="60" height="12" fill="#FFCC00"/></svg>
-    </button>
-    <svg class="lang-switcher-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4.5l3 3 3-3"/></svg>
+    <div class="lang-trigger">
+      <button class="lang-btn active" data-lang="en" aria-label="English" title="English">
+        <svg class="flag-img" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg"><clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#s)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></svg>
+      </button>
+      <button class="lang-btn" data-lang="fr" aria-label="Français" title="Français">
+        <svg class="flag-img" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="40" fill="#002395"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#ED2939"/></svg>
+      </button>
+      <button class="lang-btn" data-lang="it" aria-label="Italiano" title="Italiano">
+        <svg class="flag-img" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="40" fill="#009246"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#CE2B37"/></svg>
+      </button>
+      <button class="lang-btn" data-lang="de" aria-label="Deutsch" title="Deutsch">
+        <svg class="flag-img" viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="12" fill="#000"/><rect y="12" width="60" height="12" fill="#DD0000"/><rect y="24" width="60" height="12" fill="#FFCC00"/></svg>
+      </button>
+      <svg class="lang-switcher-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4.5l3 3 3-3"/></svg>
+    </div>
+    <div class="lang-options">
+      <button class="lang-btn lang-opt active" data-lang="en" aria-label="English" title="English">
+        <svg class="flag-img" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg"><clipPath id="s2"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="t2"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#s2)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t2)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></svg>
+      </button>
+      <button class="lang-btn lang-opt" data-lang="fr" aria-label="Français" title="Français">
+        <svg class="flag-img" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="40" fill="#002395"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#ED2939"/></svg>
+      </button>
+      <button class="lang-btn lang-opt" data-lang="it" aria-label="Italiano" title="Italiano">
+        <svg class="flag-img" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="40" fill="#009246"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#CE2B37"/></svg>
+      </button>
+      <button class="lang-btn lang-opt" data-lang="de" aria-label="Deutsch" title="Deutsch">
+        <svg class="flag-img" viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="12" fill="#000"/><rect y="12" width="60" height="12" fill="#DD0000"/><rect y="24" width="60" height="12" fill="#FFCC00"/></svg>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -2222,7 +2270,7 @@ border-color: var(--jungle-deep);
         </div>
         <div class="tour-modal-stat">
           <span class="tour-modal-stat-icon">💰</span>
-          <span class="tour-modal-stat-label" data-i18n="iranja_price_label">From</span>
+          <span class="tour-modal-stat-label" data-i18n="iranja_price_label">Price</span>
           <span class="tour-modal-stat-value" data-i18n="iranja_price">€60 / person</span>
         </div>
         <div class="tour-modal-stat">
@@ -2290,7 +2338,10 @@ border-color: var(--jungle-deep);
   <div class="tour-modal-card">
     <button class="tour-modal-close" id="kombaModalClose" aria-label="Close">&times;</button>
     <div class="tour-modal-hero">
-      <img src="MakiNosyKomba.jpg" alt="Black lemur in the jungle of Nosy Komba, Madagascar" loading="lazy" style="object-position: center 25%;">
+      <picture>
+        <source srcset="MakiNosyKomba.webp" type="image/webp">
+        <img src="MakiNosyKomba.jpg" alt="Black lemur in the jungle of Nosy Komba, Madagascar" loading="lazy" style="object-position: center 25%;">
+      </picture>
       <span class="tour-modal-photo-credit">Photo: "Maki Nosy Komba" by Lebelot, CC BY-SA 3.0</span>
       <div class="tour-modal-hero-overlay">
         <div class="tour-modal-tag" data-i18n="komba_tagline">Lemur Island · Nosy Be</div>
@@ -2306,7 +2357,7 @@ border-color: var(--jungle-deep);
         </div>
         <div class="tour-modal-stat">
           <span class="tour-modal-stat-icon">💰</span>
-          <span class="tour-modal-stat-label" data-i18n="komba_price_label">From</span>
+          <span class="tour-modal-stat-label" data-i18n="komba_price_label">Price</span>
           <span class="tour-modal-stat-value" data-i18n="komba_price">€40 / person</span>
         </div>
         <div class="tour-modal-stat">
@@ -2373,7 +2424,10 @@ border-color: var(--jungle-deep);
   <div class="tour-modal-card">
     <button class="tour-modal-close" id="tanModalClose" aria-label="Close">&times;</button>
     <div class="tour-modal-hero">
-      <img src="NosyTanikelyTurtle.JPEG" alt="Sea turtle in Nosy Tanikely marine reserve, Nosy Be, Madagascar" loading="lazy" style="object-position: center 30%;">
+      <picture>
+        <source srcset="NosyTanikelyTurtle.webp" type="image/webp">
+        <img src="NosyTanikelyTurtle.JPEG" alt="Sea turtle in Nosy Tanikely marine reserve, Nosy Be, Madagascar" loading="lazy" style="object-position: center 30%;">
+      </picture>
       <div class="tour-modal-hero-overlay">
         <div class="tour-modal-tag" data-i18n="tanikely_tagline">Natural Aquarium · Nosy Be</div>
         <h2 id="tanModalTitle" class="tour-modal-title">Nosy Tanikely</h2>
@@ -2388,7 +2442,7 @@ border-color: var(--jungle-deep);
         </div>
         <div class="tour-modal-stat">
           <span class="tour-modal-stat-icon">💰</span>
-          <span class="tour-modal-stat-label" data-i18n="tanikely_price_label">From</span>
+          <span class="tour-modal-stat-label" data-i18n="tanikely_price_label">Price</span>
           <span class="tour-modal-stat-value" data-i18n="tanikely_price">€45 / person</span>
         </div>
         <div class="tour-modal-stat">
@@ -2593,7 +2647,7 @@ border-color: var(--jungle-deep);
       ot_ask: "Ask for info", ot_details: "More details", swipe_explore: "Swipe to explore",
       komba_tagline: "Lemur Island · Nosy Be",
       komba_duration_label: "Duration", komba_duration: "~7 hours",
-      komba_price_label: "From", komba_price: "€40 / person",
+      komba_price_label: "Price", komba_price: "€40 / person",
       komba_boat_label: "Boat ride", komba_boat: "~30 min each way",
       komba_desc: "Nosy Komba — Madagascar's legendary Lemur Island. A volcanic island with no cars, no crowds, and lush jungle trails home to the iconic black lemur. From the summit, panoramic views stretch over Nosy Be and the turquoise sea. Wander through the craft village of Ampangorina and bring home hand-embroidered linens and carved wooden masks.",
       komba_included_title: "What's Included",
@@ -2606,7 +2660,7 @@ border-color: var(--jungle-deep);
       komba_cta: "Book via WhatsApp",
       iranja_tagline: "Turtle Island · Nosy Be",
       iranja_duration_label: "Duration", iranja_duration: "~8 hours",
-      iranja_price_label: "From", iranja_price: "€60 / person",
+      iranja_price_label: "Price", iranja_price: "€60 / person",
       iranja_boat_label: "Boat ride", iranja_boat: "~2h each way",
       iranja_desc: "Nosy Iranja — Madagascar's most iconic island escape. Two islets connected by a stunning 1.2 km white sandbar at low tide, turquoise waters teeming with sea turtles, and a small fishing village where time moves slowly. This is the day trip everyone who visits Nosy Be puts first on their list.",
       iranja_included_title: "What's Included",
@@ -2620,7 +2674,7 @@ border-color: var(--jungle-deep);
       iranja_cta: "Book via WhatsApp",
       tanikely_tagline: "Natural Aquarium · Nosy Be",
       tanikely_duration_label: "Duration", tanikely_duration: "~6 hours",
-      tanikely_price_label: "From", tanikely_price: "€45 / person",
+      tanikely_price_label: "Price", tanikely_price: "€45 / person",
       tanikely_boat_label: "Boat ride", tanikely_boat: "~35 min each way",
       tanikely_desc: "Nosy Tanikely — Madagascar's finest natural aquarium. A tiny protected island 10 km from Nosy Be, surrounded by the healthiest coral reef in the region. Slip on your snorkel mask and within minutes you're swimming alongside green and hawksbill turtles, with visibility up to 30 metres. No diving experience needed — this is snorkeling for everyone.",
       tanikely_included_title: "What's Included",
@@ -2689,7 +2743,7 @@ border-color: var(--jungle-deep);
       ot_ask: "Demander des infos", ot_details: "Plus de détails", swipe_explore: "Faites défiler pour explorer",
       komba_tagline: "Île aux Lémuriens · Nosy Be",
       komba_duration_label: "Durée", komba_duration: "~7 heures",
-      komba_price_label: "À partir de", komba_price: "40€ / personne",
+      komba_price_label: "Prix", komba_price: "40€ / personne",
       komba_boat_label: "Trajet en bateau", komba_boat: "~30 min aller-retour",
       komba_desc: "Nosy Komba — la légendaire Île aux Lémuriens de Madagascar. Une île volcanique sans voitures, sans foule, avec des sentiers de jungle luxuriants abritant l'emblématique lémur noir. Du sommet, la vue panoramique s'étend sur Nosy Be et la mer turquoise. Flânez dans le village artisanal d'Ampangorina et repartez avec des linges brodés main et des masques en bois sculpté.",
       komba_included_title: "Ce qui est inclus",
@@ -2702,7 +2756,7 @@ border-color: var(--jungle-deep);
       komba_cta: "Réserver via WhatsApp",
       iranja_tagline: "Île aux Tortues · Nosy Be",
       iranja_duration_label: "Durée", iranja_duration: "~8 heures",
-      iranja_price_label: "À partir de", iranja_price: "60€ / personne",
+      iranja_price_label: "Prix", iranja_price: "60€ / personne",
       iranja_boat_label: "Trajet en bateau", iranja_boat: "~2h aller-retour",
       iranja_desc: "Nosy Iranja — l'île la plus iconique de Madagascar. Deux îlots reliés par un banc de sable blanc de 1,2 km à marée basse, des eaux turquoises peuplées de tortues marines et un petit village de pêcheurs où le temps s'écoule doucement. C'est l'excursion que tous les visiteurs de Nosy Be mettent en tête de liste.",
       iranja_included_title: "Ce qui est inclus",
@@ -2716,7 +2770,7 @@ border-color: var(--jungle-deep);
       iranja_cta: "Réserver via WhatsApp",
       tanikely_tagline: "Aquarium Naturel · Nosy Be",
       tanikely_duration_label: "Durée", tanikely_duration: "~6 heures",
-      tanikely_price_label: "À partir de", tanikely_price: "45€ / personne",
+      tanikely_price_label: "Prix", tanikely_price: "45€ / personne",
       tanikely_boat_label: "Trajet en bateau", tanikely_boat: "~35 min aller-retour",
       tanikely_desc: "Nosy Tanikely — le plus bel aquarium naturel de Madagascar. Une petite île protégée à 10 km de Nosy Be, entourée des coraux les plus sains de la région. Mettez le masque et en quelques minutes vous nagez aux côtés de tortues marines vertes et imbriquées, avec une visibilité allant jusqu'à 30 mètres. Aucune expérience de plongée n'est nécessaire — ce snorkeling est pour tous.",
       tanikely_included_title: "Ce qui est inclus",
@@ -2785,7 +2839,7 @@ border-color: var(--jungle-deep);
       ot_ask: "Chiedi informazioni", ot_details: "Maggiori dettagli", swipe_explore: "Scorri per esplorare",
       komba_tagline: "Isola dei Lemuri · Nosy Be",
       komba_duration_label: "Durata", komba_duration: "~7 ore",
-      komba_price_label: "A partire da", komba_price: "€40 / persona",
+      komba_price_label: "Prezzo", komba_price: "€40 / persona",
       komba_boat_label: "Traversata in barca", komba_boat: "~30 min per tratta",
       komba_desc: "Nosy Komba — la leggendaria Isola dei Lemuri del Madagascar. Un'isola vulcanica senza automobili, senza folla, con sentieri nella giungla rigogliosa che ospitano il leggendario lemure nero. Dalla cima, una vista panoramica si estende su Nosy Be e il mare turchese. Passeggiate nel villaggio artigianale di Ampangorina e portate a casa lenzuola ricamate a mano e maschere di legno intagliato.",
       komba_included_title: "Cosa è Incluso",
@@ -2798,7 +2852,7 @@ border-color: var(--jungle-deep);
       komba_cta: "Prenota via WhatsApp",
       iranja_tagline: "Isola delle Tartarughe · Nosy Be",
       iranja_duration_label: "Durata", iranja_duration: "~8 ore",
-      iranja_price_label: "A partire da", iranja_price: "€60 / persona",
+      iranja_price_label: "Prezzo", iranja_price: "€60 / persona",
       iranja_boat_label: "Traversata in barca", iranja_boat: "~2h andata e ritorno",
       iranja_desc: "Nosy Iranja — la più iconica isola del Madagascar. Due isolotti collegati da una lingua di sabbia bianca di 1,2 km con la bassa marea, acque turchesi ricche di tartarughe marine e un piccolo villaggio di pescatori dove il tempo scorre lentamente. È l'escursione che tutti i visitatori di Nosy Be mettono al primo posto nella loro lista.",
       iranja_included_title: "Cosa è Incluso",
@@ -2812,7 +2866,7 @@ border-color: var(--jungle-deep);
       iranja_cta: "Prenota via WhatsApp",
       tanikely_tagline: "Acquario Naturale · Nosy Be",
       tanikely_duration_label: "Durata", tanikely_duration: "~6 ore",
-      tanikely_price_label: "A partire da", tanikely_price: "€45 / persona",
+      tanikely_price_label: "Prezzo", tanikely_price: "€45 / persona",
       tanikely_boat_label: "Traversata in barca", tanikely_boat: "~35 min andata e ritorno",
       tanikely_desc: "Nosy Tanikely — il più bell'acquario naturale del Madagascar. Una piccola isola protetta a 10 km da Nosy Be, circondata dai coralli più sani della regione. Indossate la maschera e in pochi minuti nuotate accanto a tartarughe verdi e imbricate, con visibilità fino a 30 metri. Nessuna esperienza richiesta — questo snorkeling è adatto a tutti.",
       tanikely_included_title: "Cosa è Incluso",
@@ -2881,7 +2935,7 @@ border-color: var(--jungle-deep);
       ot_ask: "Info anfragen", ot_details: "Mehr Details", swipe_explore: "Wischen zum Entdecken",
       komba_tagline: "Lémureninsel · Nosy Be",
       komba_duration_label: "Dauer", komba_duration: "~7 Stunden",
-      komba_price_label: "Ab", komba_price: "€40 / Person",
+      komba_price_label: "Preis", komba_price: "€40 / Person",
       komba_boat_label: "Bootsfahrt", komba_boat: "~30 Min. je Richtung",
       komba_desc: "Nosy Komba — Madagaskars legendäre Lémureninsel. Eine Vulkaninsel ohne Autos, ohne Trubel und mit üppigen Dschungelpfaden, auf denen der ikonische Schwarze Lemur zu Hause ist. Vom Gipfel aus bietet sich ein Panoramablick über Nosy Be und das türkisfarbene Meer. Schlendern Sie durch das Kunsthandwerksdorf Ampangorina und nehmen Sie handbestickte Tischdecken und geschnitzte Holzmasken mit nach Hause.",
       komba_included_title: "Inbegriffen",
@@ -2894,7 +2948,7 @@ border-color: var(--jungle-deep);
       komba_cta: "Per WhatsApp buchen",
       iranja_tagline: "Schildkröteninsel · Nosy Be",
       iranja_duration_label: "Dauer", iranja_duration: "~8 Stunden",
-      iranja_price_label: "Ab", iranja_price: "€60 / Person",
+      iranja_price_label: "Preis", iranja_price: "€60 / Person",
       iranja_boat_label: "Bootsfahrt", iranja_boat: "~2h je Richtung",
       iranja_desc: "Nosy Iranja — Madagaskars ikonischstes Insel-Abenteuer. Zwei Inselchen, bei Ebbe durch eine 1,2 km lange weiße Sandbank verbunden, türkisfarbenes Wasser voller Meeresschildkröten und ein kleines Fischerdorf, in dem die Zeit langsam vergeht. Das ist der Ausflug, den alle Besucher von Nosy Be ganz oben auf ihre Liste setzen.",
       iranja_included_title: "Inbegriffen",
@@ -2908,7 +2962,7 @@ border-color: var(--jungle-deep);
       iranja_cta: "Per WhatsApp buchen",
       tanikely_tagline: "Natürliches Aquarium · Nosy Be",
       tanikely_duration_label: "Dauer", tanikely_duration: "~6 Stunden",
-      tanikely_price_label: "Ab", tanikely_price: "€45 / Person",
+      tanikely_price_label: "Preis", tanikely_price: "€45 / Person",
       tanikely_boat_label: "Bootsfahrt", tanikely_boat: "~35 Min. je Richtung",
       tanikely_desc: "Nosy Tanikely — Madagaskars schönstes natürliches Aquarium. Eine kleine geschützte Insel 10 km vor Nosy Be, umgeben von den gesündesten Korallen der Region. Setzen Sie die Schnorchelmaske auf und schwimmen Sie innerhalb von Minuten neben grünen Meeresschildkröten und Echten Karettschildkröten — bei einer Sichtweite bis zu 30 Metern. Keine Erfahrung nötig — Schnorcheln für jeden.",
       tanikely_included_title: "Inbegriffen",
@@ -2973,23 +3027,16 @@ border-color: var(--jungle-deep);
   // ─── COLLAPSIBLE LANGUAGE SWITCHER ───
   const langSwitcher = document.getElementById('langSwitcher');
 
-  // Toggle open/close on click
+  // Toggle open/close; switch language when non-active option is clicked
   langSwitcher.addEventListener('click', function(e) {
-    // If clicking on a non-active lang button while open, switch language and close
     var btn = e.target.closest('.lang-btn');
-    if (btn && langSwitcher.classList.contains('open')) {
-      if (!btn.classList.contains('active')) {
-        applyLanguage(btn.dataset.lang);
-      }
+    if (btn && !btn.classList.contains('active')) {
+      applyLanguage(btn.dataset.lang);
       langSwitcher.classList.remove('open');
-      e.stopPropagation();
-      return;
+    } else {
+      langSwitcher.classList.toggle('open');
     }
-    // If clicking on the active button or the switcher itself, toggle open
-    if (!langSwitcher.classList.contains('open')) {
-      langSwitcher.classList.add('open');
-      e.stopPropagation();
-    }
+    e.stopPropagation();
   });
 
   // Close when clicking outside
@@ -3167,6 +3214,21 @@ border-color: var(--jungle-deep);
     startAutoplay();
   }
 
+  // iOS-proof body lock: position:fixed prevents momentum scroll from leaking through
+  function lockBody() {
+    var scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = '-' + scrollY + 'px';
+    document.body.style.width = '100%';
+  }
+  function unlockBody() {
+    var scrollY = parseInt(document.body.style.top || '0') * -1;
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, scrollY);
+  }
+
   // ─── NOSY KOMBA MODAL ───
   const kombaModal = document.getElementById('kombaModal');
   const openKombaBtn = document.getElementById('openKombaModal');
@@ -3175,11 +3237,11 @@ border-color: var(--jungle-deep);
 
   function openKombaModal() {
     kombaModal.classList.add('open');
-    document.body.style.overflow = 'hidden';
+    lockBody();
   }
   function closeKombaModal() {
     kombaModal.classList.remove('open');
-    document.body.style.overflow = '';
+    unlockBody();
   }
   if (openKombaBtn) openKombaBtn.addEventListener('click', openKombaModal);
   if (kombaModalClose) kombaModalClose.addEventListener('click', closeKombaModal);
@@ -3196,12 +3258,12 @@ border-color: var(--jungle-deep);
 
   function openIraModal() {
     iraModal.classList.add('open');
-    document.body.style.overflow = 'hidden';
+    lockBody();
   }
 
   function closeIraModal() {
     iraModal.classList.remove('open');
-    document.body.style.overflow = '';
+    unlockBody();
   }
 
   if (openIraBtn) openIraBtn.addEventListener('click', openIraModal);
@@ -3218,11 +3280,11 @@ border-color: var(--jungle-deep);
 
   function openTanModal() {
     tanModal.classList.add('open');
-    document.body.style.overflow = 'hidden';
+    lockBody();
   }
   function closeTanModal() {
     tanModal.classList.remove('open');
-    document.body.style.overflow = '';
+    unlockBody();
   }
   if (openTanBtn) openTanBtn.addEventListener('click', openTanModal);
   if (tanModalClose) tanModalClose.addEventListener('click', closeTanModal);
