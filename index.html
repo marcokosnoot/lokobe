@@ -212,20 +212,18 @@ nav.scrolled .lang-switcher {
   font-size: 1.35rem;
   line-height: 1;
   transition: all 0.3s ease;
-  opacity: 0;
+  display: none;
   filter: grayscale(40%);
   position: relative;
-  width: 0;
-  overflow: hidden;
   pointer-events: none;
 }
 
 .lang-btn.active {
+  display: block;
   opacity: 1;
   filter: grayscale(0%);
   border-color: transparent;
   background: none;
-  width: auto;
   pointer-events: auto;
 }
 
@@ -241,8 +239,7 @@ nav.scrolled .lang-switcher {
   display: none;
   position: absolute;
   top: calc(100% + 6px);
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   flex-direction: column;
   gap: 0.25rem;
   background: rgba(11, 31, 14, 0.92);
@@ -261,8 +258,7 @@ nav.scrolled .lang-switcher {
 
 /* Option buttons inside dropdown */
 .lang-btn.lang-opt {
-  width: auto;
-  overflow: visible;
+  display: block;
   opacity: 0.45;
   filter: grayscale(40%);
   pointer-events: auto;
@@ -3214,19 +3210,11 @@ border-color: var(--jungle-deep);
     startAutoplay();
   }
 
-  // iOS-proof body lock: position:fixed prevents momentum scroll from leaking through
   function lockBody() {
-    var scrollY = window.scrollY;
-    document.body.style.position = 'fixed';
-    document.body.style.top = '-' + scrollY + 'px';
-    document.body.style.width = '100%';
+    document.body.style.overflow = 'hidden';
   }
   function unlockBody() {
-    var scrollY = parseInt(document.body.style.top || '0') * -1;
-    document.body.style.position = '';
-    document.body.style.top = '';
-    document.body.style.width = '';
-    window.scrollTo(0, scrollY);
+    document.body.style.overflow = '';
   }
 
   // ─── NOSY KOMBA MODAL ───
