@@ -566,6 +566,18 @@ margin-bottom: 1.5rem;
   overflow: hidden;
 }
 
+.intro-slider::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 90px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.38), rgba(0,0,0,0));
+  z-index: 2;
+  pointer-events: none;
+}
+
 .intro-slider .slide {
   position: absolute;
   inset: 0;
@@ -664,12 +676,12 @@ margin-bottom: 1.5rem;
   opacity: 0;
   transform: translateY(6px);
   transition: all 0.5s ease 0.3s;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.9), 0 2px 14px rgba(0,0,0,0.7);
   z-index: 3;
 }
 
 .intro-slider .slide.active .slide-label {
-  opacity: 0.7;
+  opacity: 0.88;
   transform: translateY(0);
 }
 
@@ -1902,6 +1914,10 @@ border-color: var(--jungle-deep);
         <img src="NosyIranja2.jpg" alt="Nosy Iranja — stunning sandbar connecting two islands" loading="lazy">
         <div class="slide-label" data-i18n="slide_4">Nosy Iranja</div>
       </div>
+      <div class="slide">
+        <img src="tour-group.jpeg" alt="Small group of guests with their guide on a forest trail in Lokobe" loading="lazy">
+        <div class="slide-label" data-i18n="slide_5">Small Group Tour, Lokobe</div>
+      </div>
       <div class="slider-progress" id="sliderProgress"></div>
       <div class="slider-controls">
         <div class="slider-dots" id="sliderDots">
@@ -1909,6 +1925,7 @@ border-color: var(--jungle-deep);
           <button class="slider-dot" data-slide="1" aria-label="Slide 2"></button>
           <button class="slider-dot" data-slide="2" aria-label="Slide 3"></button>
           <button class="slider-dot" data-slide="3" aria-label="Slide 4"></button>
+          <button class="slider-dot" data-slide="4" aria-label="Slide 5"></button>
         </div>
         <div class="slider-arrows">
           <button class="slider-arrow" id="sliderPrev" aria-label="Previous slide">
@@ -2604,7 +2621,7 @@ border-color: var(--jungle-deep);
       hero_desc: "Join a local guide for an unforgettable journey through Madagascar's ancient rainforest — home to chameleons, lemurs, and creatures found nowhere else on Earth.",
       hero_cta: "Book Your Adventure",
       scroll_explore: "Explore",
-      slide_1: "Lokobe Reserve, Nosy Be", slide_2: "Guided Walk, Lokobe Forest", slide_3: "Camardine & Guests", slide_4: "Nosy Iranja",
+      slide_1: "Lokobe Reserve, Nosy Be", slide_2: "Guided Walk, Lokobe Forest", slide_3: "Camardine & Guests", slide_4: "Nosy Iranja", slide_5: "Small Group Tour, Lokobe",
       about_label: "Your Guide",
       about_title: "Born on the Island,<br>Raised by the Forest",
       about_p1: "Growing up on Nosy Be, the jungle was my playground. I learned to spot a leaf-tailed gecko before I learned to read. Now I share that knowledge with travelers from around the world.",
@@ -2700,7 +2717,7 @@ border-color: var(--jungle-deep);
       hero_desc: "Rejoignez un guide local pour un voyage inoubliable à travers la forêt tropicale ancestrale de Madagascar — habitat de caméléons, de lémuriens et de créatures uniques au monde.",
       hero_cta: "Réservez Votre Aventure",
       scroll_explore: "Explorer",
-      slide_1: "Réserve de Lokobe, Nosy Be", slide_2: "Randonnée guidée, Forêt de Lokobe", slide_3: "Camardine & ses invités", slide_4: "Nosy Iranja",
+      slide_1: "Réserve de Lokobe, Nosy Be", slide_2: "Randonnée guidée, Forêt de Lokobe", slide_3: "Camardine & ses invités", slide_4: "Nosy Iranja", slide_5: "Tour en petit groupe, Lokobe",
       about_label: "Votre Guide",
       about_title: "Né sur l'île,<br>Élevé par la Forêt",
       about_p1: "En grandissant à Nosy Be, la jungle était mon terrain de jeu. J'ai appris à repérer un gecko à queue de feuille avant même de savoir lire. Aujourd'hui, je partage ce savoir avec des voyageurs du monde entier.",
@@ -2796,7 +2813,7 @@ border-color: var(--jungle-deep);
       hero_desc: "Unisciti a una guida locale per un viaggio indimenticabile nella foresta pluviale millenaria del Madagascar — dimora di camaleonti, lemuri e creature che non esistono in nessun altro luogo sulla Terra.",
       hero_cta: "Prenota la Tua Avventura",
       scroll_explore: "Esplora",
-      slide_1: "Riserva di Lokobe, Nosy Be", slide_2: "Camminata guidata, Foresta di Lokobe", slide_3: "Camardine e ospiti", slide_4: "Nosy Iranja",
+      slide_1: "Riserva di Lokobe, Nosy Be", slide_2: "Camminata guidata, Foresta di Lokobe", slide_3: "Camardine e ospiti", slide_4: "Nosy Iranja", slide_5: "Tour in piccolo gruppo, Lokobe",
       about_label: "La Tua Guida",
       about_title: "Nato sull'Isola,<br>Cresciuto nella Foresta",
       about_p1: "Crescendo a Nosy Be, la giungla era il mio parco giochi. Ho imparato ad avvistare un geco a coda di foglia prima ancora di imparare a leggere. Oggi condivido questa conoscenza con viaggiatori di tutto il mondo.",
@@ -2892,7 +2909,7 @@ border-color: var(--jungle-deep);
       hero_desc: "Begleiten Sie einen lokalen Guide auf einer unvergesslichen Reise durch Madagaskars uralten Regenwald — Heimat von Chamäleons, Lemuren und Lebewesen, die es nirgendwo sonst auf der Erde gibt.",
       hero_cta: "Buchen Sie Ihr Abenteuer",
       scroll_explore: "Entdecken",
-      slide_1: "Lokobe-Reservat, Nosy Be", slide_2: "Geführte Wanderung, Lokobe-Wald", slide_3: "Camardine & Gäste", slide_4: "Nosy Iranja",
+      slide_1: "Lokobe-Reservat, Nosy Be", slide_2: "Geführte Wanderung, Lokobe-Wald", slide_3: "Camardine & Gäste", slide_4: "Nosy Iranja", slide_5: "Kleingruppentour, Lokobe",
       about_label: "Ihr Guide",
       about_title: "Auf der Insel geboren,<br>im Wald aufgewachsen",
       about_p1: "Aufgewachsen auf Nosy Be war der Dschungel mein Spielplatz. Ich habe gelernt, einen Blattschwanzgecko zu entdecken, bevor ich lesen konnte. Heute teile ich dieses Wissen mit Reisenden aus der ganzen Welt.",
